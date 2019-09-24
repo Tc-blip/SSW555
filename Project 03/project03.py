@@ -13,8 +13,6 @@ class Individuals:
         self.Child = child
         self.Spouse = spouse
 
-    
-
 
 class Families:
     __slots__ = ["ID", "Married", "Divorced", "Husband_ID", "Husband_Name", "Wife_ID", 
