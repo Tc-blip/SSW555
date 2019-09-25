@@ -41,7 +41,7 @@ class Individuals:
         self.Age = ""
         self.Alive = "True"
         self.Death = "NA"
-        self.Child = "NA"
+        self.Child = "None"
         self.Spouse = []
     
     def add_name(self,id):
@@ -71,6 +71,11 @@ class Individuals:
         self.Death = pi[id].DEAT
     
     def add_chil(self,id):
+        for i in fm.values():
+            if id in i.Children:
+                self.Child = i.ID
+    
+    def add_spouse(self,id):
         for i in fm.values():
             if id == i.Husband_ID or id == i.Wife_ID:
                 self.Spouse.append(i.ID)
@@ -178,6 +183,7 @@ def add_infor():
         indi[key].add_birth(key)
         indi[key].add_deat(key)
         indi[key].add_chil(key)
+        indi[key].add_spouse(key)
         indi[key].add_alive()
         indi[key].add_age()
 
@@ -203,5 +209,5 @@ if __name__ == "__main__":
     add_infor()
     pt_id()
     pt_fm()
-    
+
     
