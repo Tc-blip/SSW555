@@ -56,7 +56,7 @@ class Individuals:
     def add_age(self):
         dt1 = dt.datetime.strptime(self.Birthday, '%d %b %Y')
         if self.Alive == "False":
-            dt2 = dt.datetime.strptime(self.Birthday, '%d %b %Y')
+            dt2 = dt.datetime.strptime(self.Death, '%d %b %Y')
         else:
             dt2 = dt.datetime.now()
         self.Age = ((dt2 - dt1).days) // 365
