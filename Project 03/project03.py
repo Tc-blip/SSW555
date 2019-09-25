@@ -62,12 +62,19 @@ class Families:
         self.Married = marr
     def add_husb(self,husb):
         self.Husband_ID = husb
+    def add_husb_name(self,id):
+        self.Husband_Name = pi[id].NAME
     def add_wife(self,wife):
         self.Wife_ID = wife
+    def add_wife_name(self,id):
+        self.Wife_Name = pi[id].NAME
     def add_chil(self,chil):
         self.Children.append(chil)
     def add_div(self,div):
         self.Divorced = div
+
+    def pt(self):
+        yield self.ID, self.Married,self.Divorced,self.Husband_ID, self.Husband_Name, self.Wife_ID, self.Wife_Name, self.Children
 
 def file_reader(path):
     try:
@@ -123,8 +130,22 @@ def read_person(path):
             elif new_i[1] == "DIV":
                 new_i = new_i = next(fp).split()
                 fm[id].add_div(" ".join(new_i[2:]))
-        
-           
+
+def add_infor():
+    for key,value in fm.items():
+        value.add_wife_name(value.Wife_ID)
+        value.add_husb_name(value.Husband_ID)
+def pt_fm():
+    pt = PrettyTable(field_names= ["ID", "Married", "Divorced", "Husband_ID", "Husband_Name", "Wife_ID", 
+    "Wife_Name", "Children"])
+  
+    for i in fm.values():
+        for id,married,Divorced,Husband_ID,Husband_Name,Wife_ID,Wife_Name,children in i.pt():
+            pt.add_row([id,married,Divorced,Husband_ID,Husband_Name,Wife_ID,Wife_Name,children])
+    print(pt)
+
 if __name__ == "__main__":
     read_person("test.ged")
+    add_infor()
+    pt_fm()
     
