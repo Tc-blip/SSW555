@@ -1,5 +1,5 @@
 from prettytable import PrettyTable
-
+import datetime as dt
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
 
@@ -42,7 +42,41 @@ class Individuals:
         self.Alive = "True"
         self.Death = "NA"
         self.Child = "NA"
-        self.Spouse = "NA"
+        self.Spouse = []
+    
+    def add_name(self,id):
+        self.Name = pi[id].NAME
+
+    def add_gender(self,id):
+        self.Gender = pi[id].SEX
+    
+    def add_birth(self,id):
+        self.Birthday = pi[id].BIRT
+    
+    def add_age(self):
+        dt1 = dt.datetime.strptime(self.Birthday, '%d %b %Y')
+        if self.Alive == "False":
+            dt2 = dt.datetime.strptime(self.Birthday, '%d %b %Y')
+        else:
+            dt2 = dt.datetime.now()
+        self.Age = ((dt2 - dt1).days) // 365
+
+    def add_alive(self):
+        if self.Death == "NA":
+            self.Alive = "True"
+        else:
+            self.Alive = "False"
+    
+    def add_deat(self,id):
+        self.Death = pi[id].DEAT
+    
+    def add_chil(self,id):
+        for i in fm.values():
+            if id == i.Husband_ID or id == i.Wife_ID:
+                self.Spouse.append(i.ID)
+
+    def pt(self):
+        yield self.ID, self.Name, self.Gender, self.Birthday, self.Age, self.Alive, self.Death, self.Child, self.Spouse
     
 
 class Families:
@@ -89,6 +123,7 @@ def file_reader(path):
 
 
 pi = {}
+indi = {}
 fm = {}
 
 def read_person(path):
@@ -132,9 +167,20 @@ def read_person(path):
                 fm[id].add_div(" ".join(new_i[2:]))
 
 def add_infor():
-    for key,value in fm.items():
-        value.add_wife_name(value.Wife_ID)
-        value.add_husb_name(value.Husband_ID)
+    for i in fm.values():
+        i.add_wife_name(i.Wife_ID)
+        i.add_husb_name(i.Husband_ID)
+    
+    for key,value in pi.items():
+        indi[key] = Individuals(key)
+        indi[key].add_name(key)
+        indi[key].add_gender(key)
+        indi[key].add_birth(key)
+        indi[key].add_deat(key)
+        indi[key].add_chil(key)
+        indi[key].add_alive()
+        indi[key].add_age()
+
 def pt_fm():
     pt = PrettyTable(field_names= ["ID", "Married", "Divorced", "Husband_ID", "Husband_Name", "Wife_ID", 
     "Wife_Name", "Children"])
@@ -144,8 +190,18 @@ def pt_fm():
             pt.add_row([id,married,Divorced,Husband_ID,Husband_Name,Wife_ID,Wife_Name,children])
     print(pt)
 
+def pt_id():
+    pt = PrettyTable(field_names= ["ID","Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"])
+  
+    for i in indi.values():
+        for ID,NAME,Gender,Birthday, Age, Alive, Death, Child, Spouse in i.pt():
+            pt.add_row([ID,NAME,Gender,Birthday, Age, Alive, Death, Child, Spouse])
+    print(pt)
+
 if __name__ == "__main__":
     read_person("test.ged")
     add_infor()
+    pt_id()
     pt_fm()
+    
     
