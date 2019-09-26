@@ -173,8 +173,10 @@ def read_person(path):
 
 def add_infor():
     for i in fm.values():
-        i.add_wife_name(i.Wife_ID)
-        i.add_husb_name(i.Husband_ID)
+        if i.Wife_ID != "NA":
+            i.add_wife_name(i.Wife_ID)
+        if i.Husband_ID != "NA":
+            i.add_husb_name(i.Husband_ID)
     
     for key,value in pi.items():
         indi[key] = Individuals(key)
@@ -205,7 +207,7 @@ def pt_id():
     print(pt)
 
 if __name__ == "__main__":
-    read_person("test.ged")
+    read_person("proj01.ged")
     add_infor()
     pt_id()
     pt_fm()
