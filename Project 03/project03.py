@@ -1,5 +1,6 @@
 from prettytable import PrettyTable
 import datetime as dt
+from dateFunctions import compareDates, dateBeforeCurrentDate, differenceBetweenDates, lessThan150YearsOld
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
 
@@ -14,22 +15,22 @@ class Person_info:
 
     def add_name(self,name):
         self.NAME = name
-    
+
     def add_sex(self,sex):
         self.SEX= sex
-    
+
     def add_birth(self,birth):
         self.BIRT = birth
-    
+
     def add_deat(self, deat):
         self.DEAT = deat
-    
+
     def add_famc(self,famc):
         self.FAMC = famc
-    
+
     def add_fams(self,fams):
         self.FAMS = fams
-    
+
 
 class Individuals:
     __slots__ = ["ID","Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
@@ -43,20 +44,30 @@ class Individuals:
         self.Death = "NA"
         self.Child = "None"
         self.Spouse = []
-    
+
     def add_name(self,id):
         self.Name = pi[id].NAME
 
     def add_gender(self,id):
         self.Gender = pi[id].SEX
-    
+
     def add_birth(self,id):
         self.Birthday = pi[id].BIRT
-    
+
     def add_age(self):
         dt1 = dt.datetime.strptime(self.Birthday, '%d %b %Y')
+        if not dateBeforeCurrentDate(dt1):
+            print(self.Name + "'s birthday is not before the current date.")
+        else:
+            if not lessThan150YearsOld(dt1):
+                print(self.Name + " is older than 150 years old.")
         if self.Alive == "False":
             dt2 = dt.datetime.strptime(self.Death, '%d %b %Y')
+            if not dateBeforeCurrentDate(dt2):
+                print(self.Name + "'s death is not before the current date.")
+            else:
+                if differenceBetweenDates(dt2, dt1) > 150:
+                    print(self.Name + " lived to be longer than 150 years old.")
         else:
             dt2 = dt.datetime.now()
         self.Age = ((dt2 - dt1).days) // 365
@@ -66,15 +77,15 @@ class Individuals:
             self.Alive = "True"
         else:
             self.Alive = "False"
-    
+
     def add_deat(self,id):
         self.Death = pi[id].DEAT
-    
+
     def add_chil(self,id):
         for i in fm.values():
             if id in i.Children:
                 self.Child = i.ID
-    
+
     def add_spouse(self,id):
         for i in fm.values():
             if id == i.Husband_ID or id == i.Wife_ID:
@@ -82,11 +93,11 @@ class Individuals:
 
     def pt(self):
         yield self.ID, self.Name, self.Gender, self.Birthday, self.Age, self.Alive, self.Death, self.Child, self.Spouse
-    
+
 
 class Families:
-    __slots__ = ["ID", "Married", "Divorced", "Husband_ID", "Husband_Name", "Wife_ID", 
-    "Wife_Name", "Children"]
+    __slots__ = ["ID", "Married", "Divorced", "Husband_ID", "Husband_Name", "Wife_ID",
+                 "Wife_Name", "Children"]
     def __init__(self,id):
         self.ID = id
         self.Married = "NA"
@@ -99,6 +110,9 @@ class Families:
 
     def add_marr(self,marr):
         self.Married = marr
+        dt1 = dt.datetime.strptime(self.Married, '%d %b %Y')
+        if not dateBeforeCurrentDate(dt1):
+            print(self.ID + "'s marriage is not before the current date.")
     def add_husb(self,husb):
         self.Husband_ID = husb
     def add_husb_name(self,id):
@@ -111,6 +125,10 @@ class Families:
         self.Children.append(chil)
     def add_div(self,div):
         self.Divorced = div
+        dt1 = dt.datetime.strptime(self.Divorced, '%d %b %Y')
+        if not dateBeforeCurrentDate(dt1):
+            print(self.ID + "'s divorce is not before the current date.")
+
 
     def pt(self):
         yield self.ID, self.Married,self.Divorced,self.Husband_ID, self.Husband_Name, self.Wife_ID, self.Wife_Name, self.Children
@@ -133,7 +151,7 @@ fm = {}
 
 def read_person(path):
     fp = file_reader(path)
-    
+
     for i in fp:
         new_i = i.split()
         if new_i[0] == "0":
@@ -177,7 +195,7 @@ def add_infor():
             i.add_wife_name(i.Wife_ID)
         if i.Husband_ID != "NA":
             i.add_husb_name(i.Husband_ID)
-    
+
     for key,value in pi.items():
         indi[key] = Individuals(key)
         indi[key].add_name(key)
@@ -190,9 +208,9 @@ def add_infor():
         indi[key].add_age()
 
 def pt_fm():
-    pt = PrettyTable(field_names= ["ID", "Married", "Divorced", "Husband_ID", "Husband_Name", "Wife_ID", 
-    "Wife_Name", "Children"])
-  
+    pt = PrettyTable(field_names= ["ID", "Married", "Divorced", "Husband_ID", "Husband_Name", "Wife_ID",
+                                   "Wife_Name", "Children"])
+
     for i in fm.values():
         for id,married,Divorced,Husband_ID,Husband_Name,Wife_ID,Wife_Name,children in i.pt():
             pt.add_row([id,married,Divorced,Husband_ID,Husband_Name,Wife_ID,Wife_Name,children])
@@ -200,7 +218,7 @@ def pt_fm():
 
 def pt_id():
     pt = PrettyTable(field_names= ["ID","Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"])
-  
+
     for i in indi.values():
         for ID,NAME,Gender,Birthday, Age, Alive, Death, Child, Spouse in i.pt():
             pt.add_row([ID,NAME,Gender,Birthday, Age, Alive, Death, Child, Spouse])
@@ -211,5 +229,3 @@ if __name__ == "__main__":
     add_infor()
     pt_id()
     pt_fm()
-
-    
