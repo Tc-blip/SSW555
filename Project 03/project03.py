@@ -80,6 +80,10 @@ class Individuals:
 
     def add_deat(self,id):
         self.Death = pi[id].DEAT
+        bday = dt.datetime.strptime(self.Birthday, '%d %b %Y')
+        dday = dt.datetime.strptime(self.Death, '%d %b %Y')
+        if compareDates(bday, dday) > 0:
+            print(self.Name + "'s death is not before their birthday.")
 
     def add_chil(self,id):
         for i in fm.values():
@@ -113,6 +117,9 @@ class Families:
         dt1 = dt.datetime.strptime(self.Married, '%d %b %Y')
         if not dateBeforeCurrentDate(dt1):
             print(self.ID + "'s marriage is not before the current date.")
+        bday = dt.datetime.strptime(self.Birthday, '%d %b %Y')
+        if compareDates(bday, dt1) > 0:
+            print(self.ID + "'s birth is not before their marriage date.")
     def add_husb(self,husb):
         self.Husband_ID = husb
     def add_husb_name(self,id):
