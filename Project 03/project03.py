@@ -1,6 +1,8 @@
 from prettytable import PrettyTable
 import datetime as dt
 from dateFunctions import compareDates, dateBeforeCurrentDate, differenceBetweenDates, lessThan150YearsOld
+from MarriageBeforeDivorce import marriage_before_divorce
+from Marriagebeforedeath import marriage_before_death
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
 
@@ -231,8 +233,39 @@ def pt_id():
             pt.add_row([ID,NAME,Gender,Birthday, Age, Alive, Death, Child, Spouse])
     print(pt)
 
+def check_marriage_before_divorce():
+    for family_key in fm: # get family info
+        marriage_date = fm[family_key].Married
+        divorced_date = fm[family_key].Divorced 
+
+        # convet datatime to number form
+        if marriage_date != 'NA': 
+            marriage_date = dt.datetime.strptime(marriage_date, '%d %b %Y')
+        if divorced_date != 'NA':
+            divorced_date = dt.datetime.strptime(divorced_date, '%d %b %Y')
+
+        #check if marriage_before_divorce
+        if marriage_before_divorce(marriage_date, divorced_date) == False:
+            print(f'errors! family {family_key} marriage after divorce!' )
+
+def check_marriage_before_death():
+    for family_key in fm: # get family info
+        family_ID = fm[family_key]
+        husband_ID = family_ID.Husband_ID
+        wife_ID = family_ID.Wife_ID
+
+        # check if the ID is 'NA'
+        if husband_ID != "NA":
+            husband_ID = pi[family_ID.Husband_ID]
+        if wife_ID != "NA":
+            wife_ID = pi[family_ID.Wife_ID]
+
+        marriage_before_death(family_ID,husband_ID,wife_ID)
+
 if __name__ == "__main__":
-    read_person("proj01.ged")
+    read_person("/Users/cylee820621/Desktop/SSW555/Project 03/proj01.ged")
     add_infor()
     pt_id()
     pt_fm()
+    check_marriage_before_divorce()
+    check_marriage_before_death()
