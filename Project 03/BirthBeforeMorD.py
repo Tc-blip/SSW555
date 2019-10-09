@@ -4,7 +4,15 @@ US08	Birth before marriage of parents
 US09	Birth before death of parents
 '''
 import datetime as dt
-from dateFunctions import compareDates
+
+def compareDates(date1, date2):
+    '''Takes in 2 dates and compares them. Returns -1 if the first date is earlier, 0 if they're equal, and 1 if the first date is later'''
+    if date1 > date2:
+        return 1
+    elif date1 == date2:
+        return 0
+    else:
+        return -1
 
 def birth_before_marriage_p(date1,date2):
     dt1 = dt.datetime.strptime(date1, '%d %b %Y')   
