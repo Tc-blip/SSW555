@@ -1,7 +1,7 @@
 '''
 TC sprint 1
-US08	Birth before marriage of parents
-US09	Birth before death of parents
+US02	Birth before marriage
+US03	Birth before death
 '''
 import datetime as dt
 
