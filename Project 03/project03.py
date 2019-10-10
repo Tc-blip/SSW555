@@ -2,6 +2,8 @@ from prettytable import PrettyTable
 import datetime as dt
 from dateFunctions import compareDates, dateBeforeCurrentDate, differenceBetweenDates, lessThan150YearsOld
 from BirthBeforeMorD import check_Birth_before_death, check_Birth_before_marr
+from MarriageBeforeDivorce import check_marriage_before_divorce
+from Marriagebeforedeath import check_marriage_before_death
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -226,10 +228,13 @@ def pt_id():
 
 
 if __name__ == "__main__":
-    read_person("proj01.ged")
+    read_person("/Users/cylee820621/Desktop/SSW555/Project 03/proj01.ged")
+    #read_person("proj01.ged")
     add_infor()
     pt_id()
     pt_fm()
     check_Birth_before_marr(fm,pi)
     check_Birth_before_death(indi)
+    check_marriage_before_divorce(fm)
+    check_marriage_before_death(fm,pi)
     
