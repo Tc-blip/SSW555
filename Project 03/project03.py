@@ -113,8 +113,6 @@ class Families:
     def add_marr(self,marr):
         self.Married = marr
         dt1 = dt.datetime.strptime(self.Married, '%d %b %Y')
-        if not dateBeforeCurrentDate(dt1):
-            print(self.ID + "'s marriage is not before the current date.")
     def add_husb(self,husb):
         self.Husband_ID = husb
     def add_husb_name(self,id):
@@ -228,10 +226,10 @@ def pt_id():
 
 
 if __name__ == "__main__":
-    read_person("Project 03\proj01.ged")
+    read_person("proj01.ged")
     add_infor()
     pt_id()
     pt_fm()
-    check_Birth_before_marr(fm,pi,indi)
+    check_Birth_before_marr(fm,pi)
     check_Birth_before_death(indi)
     
