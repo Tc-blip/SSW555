@@ -8,7 +8,7 @@ US09	Birth before death of parents
 '''
 
 #US08   Birth after marriage of parents
-def birthAfterMarriage(fm, pi):
+def birthAfterMarriage_par(fm, pi):
     for i in fm.values():
         if i.Married != 'NA':
             wedding_date = i.Married
@@ -22,7 +22,7 @@ def birthAfterMarriage(fm, pi):
                     print(f'Error: {pi[child].Name} was born before the parents\'s wedding or more than 9 months after the divorce.')
 
 #US09   Birth before marriage of parents
-def birthBeforeDeath(fm, pi):
+def birthBeforeDeath_par(fm, pi):
     for i in fm.values():
         if i.Married != 'NA':
             hus_death = pi[i.Husband_ID].DEAT

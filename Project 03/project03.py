@@ -2,7 +2,7 @@ from prettytable import PrettyTable
 import datetime as dt
 from dateFunctions import compareDates, dateBeforeCurrentDate, differenceBetweenDates, lessThan150YearsOld
 from BirthBeforeMorD import birth_before_death_p, birth_before_marriage_p
-from BirthBeforeMorDofParents import birthAfterMarriage, birthBeforeDeath, birthAfterMarriageOfParents, birthBeforeDeathOfParents
+from BirthBeforeMorDofParents import birthAfterMarriage_par, birthBeforeDeath_par, birthAfterMarriageOfParents, birthBeforeDeathOfParents
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -255,5 +255,5 @@ if __name__ == "__main__":
     pt_fm()
     check_Birth_before_marr()
     check_Birth_before_death()
-    birthAfterMarriage(fm, pi)
-    birthBeforeDeath(fm, pi)
+    birthAfterMarriage_par(fm, pi)
+    birthBeforeDeath_par(fm, pi)
