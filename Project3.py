@@ -1,12 +1,10 @@
+import unittest
+
 from prettytable import PrettyTable
 import datetime as dt
+from datetime import datetime
 from dateFunctions import compareDates, dateBeforeCurrentDate, differenceBetweenDates, lessThan150YearsOld
-
-from BirthBeforeMorDofParents import birthAfterMarriage_par, birthBeforeDeath_par, birthAfterMarriageOfParents, birthBeforeDeathOfParents
-from BirthBeforeMorD import check_Birth_before_death, check_Birth_before_marr
-from MarriageBeforeDivorce import check_marriage_before_divorce
-from Marriagebeforedeath import check_marriage_before_death
-
+import unittest
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -118,6 +116,8 @@ class Families:
     def add_marr(self,marr):
         self.Married = marr
         dt1 = dt.datetime.strptime(self.Married, '%d %b %Y')
+        if not dateBeforeCurrentDate(dt1):
+            print(self.ID + "'s marriage is not before the current date.")
     def add_husb(self,husb):
         self.Husband_ID = husb
     def add_husb_name(self,id):
@@ -134,7 +134,6 @@ class Families:
         if not dateBeforeCurrentDate(dt1):
             print(self.ID + "'s divorce is not before the current date.")
 
-
     def pt(self):
         yield self.ID, self.Married,self.Divorced,self.Husband_ID, self.Husband_Name, self.Wife_ID, self.Wife_Name, self.Children
 
@@ -150,9 +149,9 @@ def file_reader(path):
                 yield line
 
 
-pi = {}   #person information dict
-indi = {}  #indiv information dict
-fm = {}     #family information dic
+pi = {}
+indi = {}
+fm = {}
 
 def read_person(path):
     fp = file_reader(path)
@@ -215,6 +214,7 @@ def add_infor():
 def pt_fm():
     pt = PrettyTable(field_names= ["ID", "Married", "Divorced", "Husband_ID", "Husband_Name", "Wife_ID",
                                    "Wife_Name", "Children"])
+
     for i in fm.values():
         for id,married,Divorced,Husband_ID,Husband_Name,Wife_ID,Wife_Name,children in i.pt():
             pt.add_row([id,married,Divorced,Husband_ID,Husband_Name,Wife_ID,Wife_Name,children])
@@ -229,19 +229,33 @@ def pt_id():
     print(pt)
 
 
+def parents_not_old():
+    for k, v in fm.items():
+        if v.Husband_ID != 'NA' and v.Wife_ID != 'NA':
+            bd_father = datetime.strptime(indi[v.Husband_ID].Birthday, '%d %b %Y')
+            bd_mother = datetime.strptime(indi[v.Wife_ID].Birthday, '%d %b %Y')
+            for c in v.Children:
+                if indi[c].Birthday != 'NA':
+                    bd_child = datetime.strptime(indi[c].Birthday, '%d %b %Y')
+                    diff_father = (abs((bd_father - bd_child).days)) / 365
+                    diff_mother = (abs((bd_mother - bd_child).days)) / 365
+                    if diff_father > 80:
+                        print('ERROR: Individual US12: ' + c + ' is [ ' + str(diff_father) + 'years older ] than his father.')
+                    if diff_mother > 60:
+                        print('ERROR: Individual US12: ' + c + ' is [ ' + str(diff_mother) + 'years older ] than his mother.')
+
+def male_last_name():
+    for k, v in fm.items():
+        family_last_name = indi[v.Husband_ID].Name.split('/')[1]
+        for i in v.Children:
+            if indi[i].Gender == 'M' and indi[i].Name.split('/')[1] != family_last_name:
+                print('ERROR: INDIVIDUAL US16' + indi[i].ID + ': has last name ' + indi[i].Name.split('/')[1] +
+                      ' which is different from the family last name: ' + family_last_name)
 
 if __name__ == "__main__":
-    read_person("proj01.ged")
+    read_person("/Users/apple/Desktop/Code/555/123.ged")
     add_infor()
-    pt_id()
     pt_fm()
-
-    birthAfterMarriage_par(fm, pi)
-    birthBeforeDeath_par(fm, pi)
-
-    check_Birth_before_marr(fm,pi)
-    check_Birth_before_death(indi)
-    
-    check_marriage_before_divorce(fm)
-    check_marriage_before_death(fm,pi)
-    
+    pt_id()
+    parents_not_old()
+    male_last_name()
