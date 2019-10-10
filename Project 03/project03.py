@@ -1,6 +1,8 @@
 from prettytable import PrettyTable
 import datetime as dt
 from dateFunctions import compareDates, dateBeforeCurrentDate, differenceBetweenDates, lessThan150YearsOld
+from BirthBeforeMorD import birth_before_death_p, birth_before_marriage_p
+
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
 
@@ -152,9 +154,9 @@ def file_reader(path):
                 yield line
 
 
-pi = {}
-indi = {}
-fm = {}
+pi = {}   #person information dict
+indi = {}  #indiv information dict
+fm = {}     #family information dic
 
 def read_person(path):
     fp = file_reader(path)
@@ -217,7 +219,6 @@ def add_infor():
 def pt_fm():
     pt = PrettyTable(field_names= ["ID", "Married", "Divorced", "Husband_ID", "Husband_Name", "Wife_ID",
                                    "Wife_Name", "Children"])
-
     for i in fm.values():
         for id,married,Divorced,Husband_ID,Husband_Name,Wife_ID,Wife_Name,children in i.pt():
             pt.add_row([id,married,Divorced,Husband_ID,Husband_Name,Wife_ID,Wife_Name,children])
@@ -231,8 +232,36 @@ def pt_id():
             pt.add_row([ID,NAME,Gender,Birthday, Age, Alive, Death, Child, Spouse])
     print(pt)
 
+
+#US08	Birth before marriage of parents
+def check_Birth_before_marr():
+    for i in fm.values():
+        # check hus birthday before marr
+        hus_birthday = pi[i.Husband_ID].BIRT
+        if i.Married != 'NA':
+            if not birth_before_marriage_p(hus_birthday,i.Married):
+                print(f'Error {i.Husband_Name} birthday_before_marr birthday{hus_birthday}  married{i.Married}')
+        
+        #check wife birthday before marr
+        if i.Wife_ID != 'NA':
+            wife_birthday = pi[i.Wife_ID].BIRT
+            if not birth_before_marriage_p(wife_birthday,i.Married):
+                print(f'Error {i.Wife_Name} birthday_before_marr birthday {wife_birthday}  married {i.Married}')
+        
+
+#US09	Birth before death of parents
+def check_Birth_before_death():
+    for i in indi.values():
+        if i.Death != 'NA':
+            if not birth_before_death_p(i.Birthday,i.Death):
+                print(f'Error {i.Name} birthday_before_marr birthday {i.Birthday}  Death {i.Death}')
+
+
 if __name__ == "__main__":
-    read_person("proj01.ged")
+    read_person("Project 03\proj01.ged")
     add_infor()
     pt_id()
     pt_fm()
+    check_Birth_before_marr()
+    check_Birth_before_death()
+    
