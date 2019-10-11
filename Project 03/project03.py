@@ -8,6 +8,7 @@ from MarriageBeforeDivorce import check_marriage_before_divorce
 from Marriagebeforedeath import check_marriage_before_death
 from MaleLastName import check_male_last_name
 from ParentsNotOld import check_parents_not_old
+from DivorceBeforeDeath import check_divorce_before_death
 
 
 class Person_info:
@@ -250,3 +251,4 @@ if __name__ == "__main__":
     check_male_last_name(fm,indi)
     check_parents_not_old(fm,indi)
     
+    check_divorce_before_death(fm,pi)
