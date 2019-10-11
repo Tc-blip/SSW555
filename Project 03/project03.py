@@ -245,10 +245,10 @@ if __name__ == "__main__":
     check_Birth_before_marr(fm,pi)
     check_Birth_before_death(indi)
     
-    check_marriage_before_divorce(fm)
-    check_marriage_before_death(fm,pi)
+    check_marriage_before_divorce(fm) #04
+    check_marriage_before_death(fm,pi) #05
     
     check_male_last_name(fm,indi)
     check_parents_not_old(fm,indi)
     
-    check_divorce_before_death(fm,pi)
+    check_divorce_before_death(fm,pi) #06
