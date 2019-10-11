@@ -3,7 +3,6 @@ Author CYL
 sprint 2: User story 06
 """
 import datetime as dt
-
 def check_divorce_before_death(fm, pi):
     for key in fm:
         family = fm[key]
@@ -51,8 +50,6 @@ def divorce_before_death(family_divorce_date, husban_death_date, wife_death_date
         else:
             return True
         
-      
-
 def get_death_date(pi,id):
     if id != "NA":
         death_date = pi[id].DEAT
