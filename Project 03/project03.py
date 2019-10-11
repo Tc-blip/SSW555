@@ -6,6 +6,8 @@ from BirthBeforeMorDofParents import birthAfterMarriage_par, birthBeforeDeath_pa
 from BirthBeforeMorD import check_Birth_before_death, check_Birth_before_marr
 from MarriageBeforeDivorce import check_marriage_before_divorce
 from Marriagebeforedeath import check_marriage_before_death
+from MaleLastName import check_male_last_name
+from ParentsNotOld import check_parents_not_old
 
 
 class Person_info:
@@ -244,4 +246,7 @@ if __name__ == "__main__":
     
     check_marriage_before_divorce(fm)
     check_marriage_before_death(fm,pi)
+    
+    check_male_last_name(fm,indi)
+    check_parents_not_old(fm,indi)
     
