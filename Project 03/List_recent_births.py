@@ -6,10 +6,15 @@ TC
 
 import datetime as dt
 
+
+def check__born_in_30(dt_now,dt_birth,name):
+    if abs((dt_now-dt_birth)).days <30:
+        print(f"{name} were born in last 30 days, born {abs((dt_now-dt_birth)).days} days")
+        return f"{name} were born in last 30 days, born {abs((dt_now-dt_birth)).days} days"
+
 def list_born_in_30(indi):
     dt_now = dt.datetime.now()
     for i in indi.values():
         dt_birth = dt.datetime.strptime(i.Birthday, '%d %b %Y') 
-        if (dt_now-dt_birth).days <30:
-            print(f"{i.Name} were born in last 30 days, born {(dt_now-dt_birth).days} days ")
+        check__born_in_30(dt_now,dt_birth,i.Name)
 
