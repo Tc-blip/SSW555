@@ -6,7 +6,8 @@ from BirthBeforeMorDofParents import birthAfterMarriage_par, birthBeforeDeath_pa
 from BirthBeforeMorD import check_Birth_before_death, check_Birth_before_marr
 from MarriageBeforeDivorce import check_marriage_before_divorce
 from Marriagebeforedeath import check_marriage_before_death
-
+from List_recent_births import list_born_in_30
+from List_recent_deaths import list_died_in_30
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -231,7 +232,7 @@ def pt_id():
 
 
 if __name__ == "__main__":
-    read_person("proj01.ged")
+    read_person("Project 03\proj01.ged")
     add_infor()
     pt_id()
     pt_fm()
@@ -245,3 +246,5 @@ if __name__ == "__main__":
     check_marriage_before_divorce(fm)
     check_marriage_before_death(fm,pi)
     
+    list_born_in_30(indi)
+    list_died_in_30(indi)
