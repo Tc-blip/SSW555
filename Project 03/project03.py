@@ -232,7 +232,7 @@ def pt_id():
 
 
 if __name__ == "__main__":
-    read_person("Project 03\proj01.ged")
+    read_person("/Users/chengtian/Desktop/555/SSW555/Project 03/proj01.ged")
     add_infor()
     pt_id()
     pt_fm()
