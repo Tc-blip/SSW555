@@ -8,6 +8,12 @@ from MarriageBeforeDivorce import check_marriage_before_divorce
 from Marriagebeforedeath import check_marriage_before_death
 from List_recent_births import list_born_in_30
 from List_recent_deaths import list_died_in_30
+from MaleLastName import check_male_last_name
+from ParentsNotOld import check_parents_not_old
+from DivorceBeforeDeath import check_divorce_before_death
+from MultipleBirths import multiple_birth
+from bigamyAndMarriageBefore14 import noBigamy, marriageAfter14
+
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -64,18 +70,8 @@ class Individuals:
 
     def add_age(self):
         dt1 = dt.datetime.strptime(self.Birthday, '%d %b %Y')
-        if not dateBeforeCurrentDate(dt1):
-            print(self.Name + "'s birthday is not before the current date.")
-        else:
-            if not lessThan150YearsOld(dt1):
-                print(self.Name + " is older than 150 years old.")
         if self.Alive == "False":
             dt2 = dt.datetime.strptime(self.Death, '%d %b %Y')
-            if not dateBeforeCurrentDate(dt2):
-                print(self.Name + "'s death is not before the current date.")
-            else:
-                if differenceBetweenDates(dt2, dt1) > 150:
-                    print(self.Name + " lived to be longer than 150 years old.")
         else:
             dt2 = dt.datetime.now()
         self.Age = ((dt2 - dt1).days) // 365
@@ -118,7 +114,6 @@ class Families:
 
     def add_marr(self,marr):
         self.Married = marr
-        dt1 = dt.datetime.strptime(self.Married, '%d %b %Y')
     def add_husb(self,husb):
         self.Husband_ID = husb
     def add_husb_name(self,id):
@@ -131,9 +126,6 @@ class Families:
         self.Children.append(chil)
     def add_div(self,div):
         self.Divorced = div
-        dt1 = dt.datetime.strptime(self.Divorced, '%d %b %Y')
-        if not dateBeforeCurrentDate(dt1):
-            print(self.ID + "'s divorce is not before the current date.")
 
 
     def pt(self):
@@ -237,14 +229,27 @@ if __name__ == "__main__":
     pt_id()
     pt_fm()
 
+    dateBeforeCurrentDate(fm, indi) #01
+    lessThan150YearsOld(indi) #07
+
     birthAfterMarriage_par(fm, pi)
     birthBeforeDeath_par(fm, pi)
 
     check_Birth_before_marr(fm,pi)
     check_Birth_before_death(indi)
-    
-    check_marriage_before_divorce(fm)
-    check_marriage_before_death(fm,pi)
-    
-    list_born_in_30(indi)
-    list_died_in_30(indi)
+
+
+    check_marriage_before_divorce(fm) #04
+    check_marriage_before_death(fm,pi) #05
+
+    check_male_last_name(fm,indi)
+    check_parents_not_old(fm,indi)
+
+    check_divorce_before_death(fm,pi) #06
+    multiple_birth(fm,pi) #14
+
+    noBigamy(fm) #11
+    marriageAfter14(fm, pi) #10
+
+    list_born_in_30(indi) #35
+    list_died_in_30(indi) #36

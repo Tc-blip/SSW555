@@ -1,7 +1,7 @@
 '''
 TC sprint 1
-US08	Birth before marriage of parents
-US09	Birth before death of parents
+US02	Birth before marriage 
+US03	Birth before death 
 '''
 import datetime as dt
 
@@ -16,7 +16,7 @@ def compareDates(date1, date2):
         return -1
 
 
-#US08	Birth before marriage of parents
+#US02	Birth before marriage 
 def check_Birth_before_marr(fm,pi):
     for i in fm.values():
         # check hus birthday before marr
@@ -40,7 +40,7 @@ def birth_before_marriage_p(date1,date2):
     return True
 
 
-#US09	Birth before death of parents
+#US03	Birth before death 
 def check_Birth_before_death(indi):
     for i in indi.values():
         if i.Death != 'NA':
