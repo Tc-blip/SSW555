@@ -1,6 +1,18 @@
 from prettytable import PrettyTable
 import datetime as dt
 from dateFunctions import compareDates, dateBeforeCurrentDate, differenceBetweenDates, lessThan150YearsOld
+
+from BirthBeforeMorDofParents import birthAfterMarriage_par, birthBeforeDeath_par, birthAfterMarriageOfParents, birthBeforeDeathOfParents
+from BirthBeforeMorD import check_Birth_before_death, check_Birth_before_marr
+from MarriageBeforeDivorce import check_marriage_before_divorce
+from Marriagebeforedeath import check_marriage_before_death
+from MaleLastName import check_male_last_name
+from ParentsNotOld import check_parents_not_old
+from DivorceBeforeDeath import check_divorce_before_death
+from MultipleBirths import multiple_birth
+from bigamyAndMarriageBefore14 import noBigamy, marriageAfter14
+
+
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
 
@@ -56,18 +68,8 @@ class Individuals:
 
     def add_age(self):
         dt1 = dt.datetime.strptime(self.Birthday, '%d %b %Y')
-        if not dateBeforeCurrentDate(dt1):
-            print(self.Name + "'s birthday is not before the current date.")
-        else:
-            if not lessThan150YearsOld(dt1):
-                print(self.Name + " is older than 150 years old.")
         if self.Alive == "False":
             dt2 = dt.datetime.strptime(self.Death, '%d %b %Y')
-            if not dateBeforeCurrentDate(dt2):
-                print(self.Name + "'s death is not before the current date.")
-            else:
-                if differenceBetweenDates(dt2, dt1) > 150:
-                    print(self.Name + " lived to be longer than 150 years old.")
         else:
             dt2 = dt.datetime.now()
         self.Age = ((dt2 - dt1).days) // 365
@@ -110,9 +112,6 @@ class Families:
 
     def add_marr(self,marr):
         self.Married = marr
-        dt1 = dt.datetime.strptime(self.Married, '%d %b %Y')
-        if not dateBeforeCurrentDate(dt1):
-            print(self.ID + "'s marriage is not before the current date.")
     def add_husb(self,husb):
         self.Husband_ID = husb
     def add_husb_name(self,id):
@@ -125,9 +124,6 @@ class Families:
         self.Children.append(chil)
     def add_div(self,div):
         self.Divorced = div
-        dt1 = dt.datetime.strptime(self.Divorced, '%d %b %Y')
-        if not dateBeforeCurrentDate(dt1):
-            print(self.ID + "'s divorce is not before the current date.")
 
 
     def pt(self):
@@ -145,9 +141,9 @@ def file_reader(path):
                 yield line
 
 
-pi = {}
-indi = {}
-fm = {}
+pi = {}   #person information dict
+indi = {}  #indiv information dict
+fm = {}     #family information dic
 
 def read_person(path):
     fp = file_reader(path)
@@ -210,7 +206,6 @@ def add_infor():
 def pt_fm():
     pt = PrettyTable(field_names= ["ID", "Married", "Divorced", "Husband_ID", "Husband_Name", "Wife_ID",
                                    "Wife_Name", "Children"])
-
     for i in fm.values():
         for id,married,Divorced,Husband_ID,Husband_Name,Wife_ID,Wife_Name,children in i.pt():
             pt.add_row([id,married,Divorced,Husband_ID,Husband_Name,Wife_ID,Wife_Name,children])
@@ -224,8 +219,31 @@ def pt_id():
             pt.add_row([ID,NAME,Gender,Birthday, Age, Alive, Death, Child, Spouse])
     print(pt)
 
+
+
 if __name__ == "__main__":
     read_person("proj01.ged")
     add_infor()
     pt_id()
     pt_fm()
+
+    dateBeforeCurrentDate(fm, indi) #01
+    lessThan150YearsOld(indi) #07
+
+    birthAfterMarriage_par(fm, pi)
+    birthBeforeDeath_par(fm, pi)
+
+    check_Birth_before_marr(fm,pi)
+    check_Birth_before_death(indi)
+
+    check_marriage_before_divorce(fm) #04
+    check_marriage_before_death(fm,pi) #05
+
+    check_male_last_name(fm,indi)
+    check_parents_not_old(fm,indi)
+
+    check_divorce_before_death(fm,pi) #06
+    multiple_birth(fm,pi) #14
+
+    noBigamy(fm) #11
+    marriageAfter14(fm, pi) #10
