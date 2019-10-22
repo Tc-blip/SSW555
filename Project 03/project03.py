@@ -6,6 +6,8 @@ from BirthBeforeMorDofParents import birthAfterMarriage_par, birthBeforeDeath_pa
 from BirthBeforeMorD import check_Birth_before_death, check_Birth_before_marr
 from MarriageBeforeDivorce import check_marriage_before_divorce
 from Marriagebeforedeath import check_marriage_before_death
+from List_recent_births import list_born_in_30
+from List_recent_deaths import list_died_in_30
 from MaleLastName import check_male_last_name
 from ParentsNotOld import check_parents_not_old
 from DivorceBeforeDeath import check_divorce_before_death
@@ -222,7 +224,7 @@ def pt_id():
 
 
 if __name__ == "__main__":
-    read_person("proj01.ged")
+    read_person("/Users/chengtian/Desktop/555/SSW555/Project 03/proj01.ged")
     add_infor()
     pt_id()
     pt_fm()
@@ -236,6 +238,7 @@ if __name__ == "__main__":
     check_Birth_before_marr(fm,pi)
     check_Birth_before_death(indi)
 
+
     check_marriage_before_divorce(fm) #04
     check_marriage_before_death(fm,pi) #05
 
@@ -247,3 +250,6 @@ if __name__ == "__main__":
 
     noBigamy(fm) #11
     marriageAfter14(fm, pi) #10
+
+    list_born_in_30(indi) #35
+    list_died_in_30(indi) #36
