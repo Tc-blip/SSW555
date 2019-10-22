@@ -40,7 +40,6 @@ def dateBeforeCurrentDate(fm, indi):
 
     return invalidDate != 0
 
-
 def differenceBetweenDates(date1, date2):
     '''Takes in 2 dates and returns date1-date2 in years'''
     delta = date2-date1
