@@ -11,7 +11,7 @@ def check_male_last_name(fm,indi):
             if indi[i].Gender == 'M':
                 child_last_name = indi[i].Name.split('/')[1]
                 if male_last_name(family_last_name,child_last_name) is False:
-                    print('ERROR: INDIVIDUAL US16' + indi[i].ID + ': has last name ' + child_last_name +
+                    print('Error: INDIVIDUAL US16 ' + indi[i].ID + ' has last name ' + child_last_name +
                       ' which is different from the family last name: ' + family_last_name)
 
 

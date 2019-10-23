@@ -22,7 +22,7 @@ class TestSprint1Methods(unittest.TestCase):
 
         self.assertEqual(dateBeforeCurrentDate(date1), True)
         self.assertEqual(dateBeforeCurrentDate(date2 + timedelta(21)), False)
-        self.assertEqual(dateBeforeCurrentDate(date2), False)
+        self.assertEqual(dateBeforeCurrentDate(date2), True)
 
     def test_differenceBetweenDates(self):
         """date1 is 10 years before the current date, date2 is 5 years before the current date, date3 is 1 year before the current date"""
