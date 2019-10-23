@@ -10,7 +10,7 @@ from MaleLastName import check_male_last_name
 from ParentsNotOld import check_parents_not_old
 from DivorceBeforeDeath import check_divorce_before_death
 from MultipleBirths import multiple_birth
-
+from SiblingSpacing import check_siblingSpacing
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -254,3 +254,5 @@ if __name__ == "__main__":
     
     check_divorce_before_death(fm,pi) #06
     multiple_birth(fm,pi) #14
+
+    check_siblingSpacing(fm, pi) #28 and 13
