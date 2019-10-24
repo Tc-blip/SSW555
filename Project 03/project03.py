@@ -12,6 +12,8 @@ from MaleLastName import check_male_last_name
 from ParentsNotOld import check_parents_not_old
 from DivorceBeforeDeath import check_divorce_before_death
 from MultipleBirths import multiple_birth
+from UniqueID import check_unique_id
+from CorrectGender import check_correct_gender
 from SiblingSpacing import check_siblingSpacing
 from bigamyAndMarriageBefore14 import noBigamy, marriageAfter14
 
@@ -146,19 +148,24 @@ def file_reader(path):
 pi = {}   #person information dict
 indi = {}  #indiv information dict
 fm = {}     #family information dic
+Individual_ID_list = []
+Familiy_ID_list =[]
+
 
 def read_person(path):
     fp = file_reader(path)
-
+    
     for i in fp:
         new_i = i.split()
         if new_i[0] == "0":
             if "INDI" in new_i:
-                pi[new_i[1]] = Person_info(new_i[1])
-                id = new_i[1]
+               pi[new_i[1]] = Person_info(new_i[1])
+               id = new_i[1]
+               Individual_ID_list.append(new_i[1])
             if "FAM" in new_i:
                 fm[new_i[1]] = Families(new_i[1])
                 id = new_i[1]
+                Familiy_ID_list.append(new_i[1])
         else:
             if new_i[1] == "NAME":
                 pi[id].add_name(" ".join(new_i[2:]))
@@ -224,7 +231,7 @@ def pt_id():
 
 
 if __name__ == "__main__":
-    read_person("proj01.ged")
+    read_person("/Users/apple/Desktop/Code/555/Project3/test1.ged")
     add_infor()
     pt_id()
     pt_fm()
@@ -255,3 +262,7 @@ if __name__ == "__main__":
 
     list_born_in_30(indi) #35
     list_died_in_30(indi) #36
+
+    check_correct_gender(fm,indi)#21
+    check_unique_id(Individual_ID_list,Familiy_ID_list)#22
+    
