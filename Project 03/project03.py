@@ -18,6 +18,7 @@ from SiblingSpacing import check_siblingSpacing
 from bigamyAndMarriageBefore14 import noBigamy, marriageAfter14
 from ListUpcomingBirthdays import ListUpcomingBirthdays
 from ListUpcomingAnniversaries import ListUpcomingAnniversaries
+from US24 import check_unique_fm_by_spouses
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -256,7 +257,7 @@ if __name__ == "__main__":
     check_divorce_before_death(fm,pi) #06
     multiple_birth(fm,pi) #14
 
-    check_siblingSpacing(fm, pi) #28 and 13
+   # check_siblingSpacing(fm, pi) #28 and 13
 
     noBigamy(fm) #11
     marriageAfter14(fm, pi) #10
@@ -269,4 +270,7 @@ if __name__ == "__main__":
 
     ListUpcomingBirthdays(pi) #38
     ListUpcomingAnniversaries(fm,indi) #39
+    
+    
+    check_unique_fm_by_spouses(fm) #24
     
