@@ -17,11 +17,10 @@ def ListUpcomingBirthdays(pi):
     print(f"All living people whose birthdays occur in the next 30 days {upcomingBdaylist}")
     return upcomingBdaylist
     
-def convert_to_same_year(pb):
+
+def convert_to_same_year(md):
     dt_now = dt.datetime.now()
-    year = (dt_now - pb).days
-    year = int(year/365)
-    if pb.month >dt_now.month:
-        year += 1
-    pb = pb.replace(year = pb.year + year)
-    return pb
+    if md.year != dt_now.year and md.year < dt_now.year:
+        year_delta = (dt_now.year - md.year)
+        md = md.replace(year = (md.year + year_delta))
+    return md

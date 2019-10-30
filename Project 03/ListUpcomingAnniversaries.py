@@ -2,8 +2,10 @@
 List all living couples in a GEDCOM file whose marriage anniversaries occur in the next 30 days
 """
 import datetime as dt
+from datetime import timedelta
 
 def ListUpcomingAnniversaries(fm, indi):
+
     upcomingAdaylist = []
     for key in fm:
         family = fm[key]
@@ -36,7 +38,7 @@ def check_if_living_couple(family,indi):
 
 def check_if_occur_in_30_days(marriage_date):
     dt_now = dt.datetime.now()
-    delt_day = (marriage_date - dt_now).days
+    delt_day = (marriage_date.day - dt_now.day)
     if delt_day <= 30 and delt_day > 0:
         return True
     else:
@@ -44,9 +46,7 @@ def check_if_occur_in_30_days(marriage_date):
 
 def convert_to_same_year(md):
     dt_now = dt.datetime.now()
-    year = (dt_now - md).days
-    year = int(year/365)
-    if md.month >dt_now.month:
-        year += 1
-    md = md.replace(year = md.year + year)
+    if md.year != dt_now.year and md.year < dt_now.year:
+        year_delta = (dt_now.year - md.year)
+        md = md.replace(year = (md.year + year_delta))
     return md
