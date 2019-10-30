@@ -16,6 +16,8 @@ from UniqueID import check_unique_id
 from CorrectGender import check_correct_gender
 from SiblingSpacing import check_siblingSpacing
 from bigamyAndMarriageBefore14 import noBigamy, marriageAfter14
+from ListUpcomingBirthdays import ListUpcomingBirthdays
+from ListUpcomingAnniversaries import ListUpcomingAnniversaries
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -231,7 +233,7 @@ def pt_id():
 
 
 if __name__ == "__main__":
-    read_person("/Users/apple/Desktop/Code/555/Project3/test1.ged")
+    read_person("test.ged")
     add_infor()
     pt_id()
     pt_fm()
@@ -244,7 +246,6 @@ if __name__ == "__main__":
 
     check_Birth_before_marr(fm,pi)
     check_Birth_before_death(indi)
-
 
     check_marriage_before_divorce(fm) #04
     check_marriage_before_death(fm,pi) #05
@@ -265,4 +266,7 @@ if __name__ == "__main__":
 
     check_correct_gender(fm,indi)#21
     check_unique_id(Individual_ID_list,Familiy_ID_list)#22
+
+    ListUpcomingBirthdays(pi) #38
+    ListUpcomingAnniversaries(fm,indi) #39
     
