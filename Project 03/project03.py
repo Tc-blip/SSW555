@@ -19,6 +19,7 @@ from bigamyAndMarriageBefore14 import noBigamy, marriageAfter14
 from ListUpcomingBirthdays import ListUpcomingBirthdays
 from ListUpcomingAnniversaries import ListUpcomingAnniversaries
 from US24 import check_unique_fm_by_spouses
+from US37 import List_recent_survivors
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -234,7 +235,7 @@ def pt_id():
 
 
 if __name__ == "__main__":
-    read_person("test.ged")
+    read_person("Project 03/test.ged")
     add_infor()
     pt_id()
     pt_fm()
@@ -273,4 +274,4 @@ if __name__ == "__main__":
     
     
     check_unique_fm_by_spouses(fm) #24
-    
+    List_recent_survivors(fm,indi) #37
