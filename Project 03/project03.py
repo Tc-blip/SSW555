@@ -1,7 +1,6 @@
 from prettytable import PrettyTable
 import datetime as dt
 from dateFunctions import compareDates, dateBeforeCurrentDate, differenceBetweenDates, lessThan150YearsOld
-
 from BirthBeforeMorDofParents import birthAfterMarriage_par, birthBeforeDeath_par, birthAfterMarriageOfParents, birthBeforeDeathOfParents
 from BirthBeforeMorD import check_Birth_before_death, check_Birth_before_marr
 from MarriageBeforeDivorce import check_marriage_before_divorce
@@ -16,6 +15,8 @@ from UniqueID import check_unique_id
 from CorrectGender import check_correct_gender
 from SiblingSpacing import check_siblingSpacing
 from bigamyAndMarriageBefore14 import noBigamy, marriageAfter14
+from List_living_married import check_list_living_married
+from List_living_single import listing_living_single
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -148,7 +149,7 @@ def file_reader(path):
 pi = {}   #person information dict
 indi = {}  #indiv information dict
 fm = {}     #family information dic
-Individual_ID_list = []
+Individual_ID_list = []  
 Familiy_ID_list =[]
 
 
@@ -266,3 +267,5 @@ if __name__ == "__main__":
     check_correct_gender(fm,indi)#21
     check_unique_id(Individual_ID_list,Familiy_ID_list)#22
     
+    check_list_living_married(fm,indi)#30
+    listing_living_single(indi)#31
