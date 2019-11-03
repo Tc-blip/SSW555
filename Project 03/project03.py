@@ -233,7 +233,7 @@ def pt_id():
 
 
 if __name__ == "__main__":
-    read_person("test.ged")
+    read_person("Project 03/test.ged")
     add_infor()
     pt_id()
     pt_fm()
