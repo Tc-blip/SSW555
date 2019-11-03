@@ -21,12 +21,12 @@ class Test_check__died_in_30(unittest.TestCase):
         dt7 = datetime.datetime(2019, 11, 17, 0, 0, 0)
         dt8 = datetime.datetime(2019, 11, 18, 0, 0, 0)
 
-        self.assertEqual(check__died_in_30(dt1,dt_now,'LEE'),'LEE were died in last 30 days, born 1 days')
+        self.assertEqual(check__died_in_30(dt1,dt_now,'LEE'),'LEE were died in last 30 days, death 1 days')
         self.assertEqual(check__died_in_30(dt2,dt_now,'BB'),None)
-        self.assertEqual(check__died_in_30(dt3,dt_now,'AA'),'AA were died in last 30 days, born 29 days')
+        self.assertEqual(check__died_in_30(dt3,dt_now,'AA'),'AA were died in last 30 days, death 29 days')
         self.assertEqual(check__died_in_30(dt4,dt_now,'CC'),None)
-        self.assertEqual(check__died_in_30(dt5,dt_now,'DD'),'DD were died in last 30 days, born 29 days')
-        self.assertEqual(check__died_in_30(dt6,dt_now, 'EE'),'EE were died in last 30 days, born 28 days')
+        self.assertEqual(check__died_in_30(dt5,dt_now,'DD'),'DD were died in last 30 days, death 29 days')
+        self.assertEqual(check__died_in_30(dt6,dt_now, 'EE'),'EE were died in last 30 days, death 28 days')
         self.assertEqual(check__died_in_30(dt7,dt_now, 'FF'),None)
         self.assertEqual(check__died_in_30(dt8,dt_now, 'GG'),None)
     
