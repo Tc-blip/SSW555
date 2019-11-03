@@ -235,7 +235,7 @@ def pt_id():
 
 
 if __name__ == "__main__":
-    read_person("Project 03/test.ged")
+    read_person("Project 03/test1.ged")
     add_infor()
     pt_id()
     pt_fm()
@@ -246,8 +246,8 @@ if __name__ == "__main__":
     birthAfterMarriage_par(fm, pi)
     birthBeforeDeath_par(fm, pi)
 
-    check_Birth_before_marr(fm,pi)
-    check_Birth_before_death(indi)
+    check_Birth_before_marr(fm,pi) #us02
+    check_Birth_before_death(indi) #us03
 
     check_marriage_before_divorce(fm) #04
     check_marriage_before_death(fm,pi) #05
@@ -258,7 +258,7 @@ if __name__ == "__main__":
     check_divorce_before_death(fm,pi) #06
     multiple_birth(fm,pi) #14
 
-   # check_siblingSpacing(fm, pi) #28 and 13
+    check_siblingSpacing(fm, pi) #28 and 13
 
     noBigamy(fm) #11
     marriageAfter14(fm, pi) #10
