@@ -9,7 +9,7 @@ class Test_check__born_in_30(unittest.TestCase):
         # return 1 means wife die before marriage.
         # return 2 means husband die before marriage.
         # return 3 means bot parent die before marriage.
-        dt_now = datetime.datetime.now()
+        dt_now = datetime.datetime(2019, 10, 17, 1, 0, 0)
         dt1 = datetime.datetime(2019, 10, 16, 0, 0, 0)
 
         dt2 = datetime.datetime(2019, 9, 17, 0, 0, 0)
