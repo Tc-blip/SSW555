@@ -24,31 +24,32 @@ def divorce_before_death(family_divorce_date, husban_death_date, wife_death_date
     # return 3 means husband and wife both died before marriage! 
     if family_divorce_date == "NA":
         return True
-
-    if husban_death_date == "NA" and wife_death_date == "NA":
-        return True
-
-    if husban_death_date == "NA" and wife_death_date != "NA":
-        if wife_death_date < family_divorce_date:
-            return 1
-        else:
+    else:
+        family_divorce_date = dt.datetime.strptime(family_divorce_date, '%d %b %Y')
+        if husban_death_date == "NA" and wife_death_date == "NA":
             return True
 
-    if husban_death_date != "NA" and wife_death_date == "NA":
-        if husban_death_date < family_divorce_date:
-            return 2
-        else:
-            return True
-    
-    if husban_death_date != "NA" and wife_death_date != "NA":
-        if husban_death_date < family_divorce_date and wife_death_date < family_divorce_date:
-            return 3
-        if husban_death_date < family_divorce_date:
-            return 2
-        if wife_death_date < family_divorce_date:
-            return 1
-        else:
-            return True
+        if husban_death_date == "NA" and wife_death_date != "NA":
+            if wife_death_date < family_divorce_date:
+                return 1
+            else:
+                return True
+
+        if husban_death_date != "NA" and wife_death_date == "NA":
+            if husban_death_date < family_divorce_date:
+                return 2
+            else:
+                return True
+        
+        if husban_death_date != "NA" and wife_death_date != "NA":
+            if husban_death_date < family_divorce_date and wife_death_date < family_divorce_date:
+                return 3
+            if husban_death_date < family_divorce_date:
+                return 2
+            if wife_death_date < family_divorce_date:
+                return 1
+            else:
+                return True
         
 def get_death_date(pi,id):
     if id != "NA":
