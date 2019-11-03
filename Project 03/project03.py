@@ -232,7 +232,7 @@ def pt_id():
 
 
 if __name__ == "__main__":
-    read_person("/Users/apple/Desktop/Code/555/Project3/test1.ged")
+    read_person("Project 03/test1.ged")
     add_infor()
     pt_id()
     pt_fm()
@@ -240,18 +240,17 @@ if __name__ == "__main__":
     dateBeforeCurrentDate(fm, indi) #01
     lessThan150YearsOld(indi) #07
 
-    birthAfterMarriage_par(fm, pi)
-    birthBeforeDeath_par(fm, pi)
+    birthAfterMarriage_par(fm, pi)#02
+    birthBeforeDeath_par(fm, pi)#03
 
-    check_Birth_before_marr(fm,pi)
-    check_Birth_before_death(indi)
-
+    check_Birth_before_marr(fm,pi)#08
+    check_Birth_before_death(indi)#09
 
     check_marriage_before_divorce(fm) #04
     check_marriage_before_death(fm,pi) #05
 
-    check_male_last_name(fm,indi)
-    check_parents_not_old(fm,indi)
+    check_male_last_name(fm,indi)#16
+    check_parents_not_old(fm,indi)#12
 
     check_divorce_before_death(fm,pi) #06
     multiple_birth(fm,pi) #14
