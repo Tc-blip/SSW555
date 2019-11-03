@@ -18,6 +18,8 @@ from SiblingSpacing import check_siblingSpacing
 from bigamyAndMarriageBefore14 import noBigamy, marriageAfter14
 from ListUpcomingBirthdays import ListUpcomingBirthdays
 from ListUpcomingAnniversaries import ListUpcomingAnniversaries
+from US24 import check_unique_fm_by_spouses
+from US37 import List_recent_survivors
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -233,6 +235,7 @@ def pt_id():
 
 
 if __name__ == "__main__":
+
     read_person("test1.ged")
     add_infor()
     pt_id()
@@ -244,8 +247,8 @@ if __name__ == "__main__":
     birthAfterMarriage_par(fm, pi)
     birthBeforeDeath_par(fm, pi)
 
-    check_Birth_before_marr(fm,pi)
-    check_Birth_before_death(indi)
+    check_Birth_before_marr(fm,pi) #us02
+    check_Birth_before_death(indi) #us03
 
     check_marriage_before_divorce(fm) #04
     check_marriage_before_death(fm,pi) #05
@@ -270,3 +273,6 @@ if __name__ == "__main__":
     ListUpcomingBirthdays(pi) #38
     ListUpcomingAnniversaries(fm,indi) #39
     
+    
+    check_unique_fm_by_spouses(fm) #24
+    List_recent_survivors(fm,indi) #37

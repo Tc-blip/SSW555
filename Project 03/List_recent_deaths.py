@@ -9,8 +9,8 @@ import datetime as dt
 
 def check__died_in_30(dt_now,dt_death,name):
     if abs((dt_now-dt_death)).days <30:
-        print(f"{name} were died in last 30 days, born {abs((dt_now-dt_death)).days} days")
-        return f"{name} were died in last 30 days, born {abs((dt_now-dt_death)).days} days"
+        print(f"US36 {name} were died in last 30 days, death {abs((dt_now-dt_death)).days} days")
+        return f"{name} were died in last 30 days, death {abs((dt_now-dt_death)).days} days"
 
 
 def list_died_in_30(indi):
