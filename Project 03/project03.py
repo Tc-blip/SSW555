@@ -1,7 +1,6 @@
 from prettytable import PrettyTable
 import datetime as dt
 from dateFunctions import compareDates, dateBeforeCurrentDate, differenceBetweenDates, lessThan150YearsOld
-
 from BirthBeforeMorDofParents import birthAfterMarriage_par, birthBeforeDeath_par, birthAfterMarriageOfParents, birthBeforeDeathOfParents
 from BirthBeforeMorD import check_Birth_before_death, check_Birth_before_marr
 from MarriageBeforeDivorce import check_marriage_before_divorce
@@ -152,7 +151,7 @@ def file_reader(path):
 pi = {}   #person information dict
 indi = {}  #indiv information dict
 fm = {}     #family information dic
-Individual_ID_list = []
+Individual_ID_list = []  
 Familiy_ID_list =[]
 
 
@@ -253,8 +252,8 @@ if __name__ == "__main__":
     check_marriage_before_divorce(fm) #04
     check_marriage_before_death(fm,pi) #05
 
-    check_male_last_name(fm,indi)
-    check_parents_not_old(fm,indi)
+    check_male_last_name(fm,indi)#16
+    check_parents_not_old(fm,indi)#12
 
     check_divorce_before_death(fm,pi) #06
     multiple_birth(fm,pi) #14
@@ -274,5 +273,7 @@ if __name__ == "__main__":
     ListUpcomingAnniversaries(fm,indi) #39
     
     
+    check_list_living_married(fm,indi)#30
+    listing_living_single(indi)#31
     check_unique_fm_by_spouses(fm) #24
     List_recent_survivors(fm,indi) #37
