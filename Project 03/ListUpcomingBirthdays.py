@@ -1,4 +1,7 @@
 """
+Chih-Yu Lee
+sprint 3
+List upcoming birthdays:
 List all living people in a GEDCOM file whose birthdays occur in the next 30 days
 """
 import datetime as dt
