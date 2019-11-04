@@ -276,7 +276,6 @@ if __name__ == "__main__":
     ListUpcomingBirthdays(pi) #38
     ListUpcomingAnniversaries(fm,indi) #39
     
-    
     check_list_living_married(fm,indi)#30
     listing_living_single(indi)#31
     check_unique_fm_by_spouses(fm) #24
