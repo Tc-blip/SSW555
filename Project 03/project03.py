@@ -19,6 +19,10 @@ from ListUpcomingBirthdays import ListUpcomingBirthdays
 from ListUpcomingAnniversaries import ListUpcomingAnniversaries
 from US24 import check_unique_fm_by_spouses
 from US37 import List_recent_survivors
+from List_living_married import check_list_living_married
+from List_living_single import listing_living_single
+from US29 import listDeceased
+from US34 import listLargeAgeDifferences
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -277,3 +281,6 @@ if __name__ == "__main__":
     listing_living_single(indi)#31
     check_unique_fm_by_spouses(fm) #24
     List_recent_survivors(fm,indi) #37
+
+    listDeceased(indi) #29
+    listLargeAgeDifferences(fm, indi) #34
