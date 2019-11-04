@@ -1,3 +1,9 @@
+"""
+Author CYL
+sprint 2: User story 06
+Divorce before death
+：Divorce can only occur before death of both spouses
+"""
 import unittest
 import datetime
 from DivorceBeforeDeath import divorce_before_death

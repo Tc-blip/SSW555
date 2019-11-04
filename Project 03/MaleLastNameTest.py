@@ -1,5 +1,4 @@
 import unittest
-
 from MaleLastName import male_last_name
 
 class TestMethod(unittest.TestCase):

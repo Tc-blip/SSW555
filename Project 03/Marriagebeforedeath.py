@@ -1,3 +1,9 @@
+"""
+Chih-Yu Lee
+sprint1
+Marriage before death:
+Marriage should occur before death of either spouse
+"""
 import datetime as dt
 
 def check_marriage_before_death(fm,pi):
