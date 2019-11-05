@@ -11,11 +11,11 @@ def check_correct_gender(fm,indi):
             gender_father = indi[v.Husband_ID].Gender
             gender_mother = indi[v.Wife_ID].Gender
             if correct_gender(gender_father,gender_mother) == 2:
-                print(f"ERROR: In family {k}, Husband {v.Husband_ID} has wrong gender!")
+                print(f"ERROR: US 21: In family {k}, Husband {v.Husband_ID} has wrong gender!")
             if correct_gender(gender_father,gender_mother) == 3:
-                print(f"ERROR: In family {k}, Wife {v.Wife_ID} has wrong gender!")
+                print(f"ERROR: US 21: In family {k}, Wife {v.Wife_ID} has wrong gender!")
             if correct_gender(gender_father,gender_mother) == 4:
-                print(f"ERROR: In family {k}, Husband {v.Husband_ID} and Wife {v.Wife_ID} both have wrong genders!")
+                print(f"ERROR: US 21: In family {k}, Husband {v.Husband_ID} and Wife {v.Wife_ID} both have wrong genders!")
 
             
 def correct_gender(gender_father,gender_mother):

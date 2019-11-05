@@ -279,6 +279,7 @@ if __name__ == "__main__":
     
     check_list_living_married(fm,indi)#30
     listing_living_single(indi)#31
+    
     check_unique_fm_by_spouses(fm) #24
     List_recent_survivors(fm,indi) #37
 
