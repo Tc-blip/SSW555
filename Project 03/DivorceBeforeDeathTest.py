@@ -14,7 +14,7 @@ class TestDivorceBeforeDeath(unittest.TestCase):
         # return 2 means husband died before marriage!
         # return 3 means husband and wife both died before marriage! 
         a_divorce_date = "NA"
-        L2015_date = datetime.datetime(2015, 1, 1, 0, 0, 0)
+        L2015_date = '01 JUN 2015'   #datetime.datetime(2015, 1, 1, 0, 0, 0)
         NA_death_date = "NA"
         c2014_date = datetime.datetime(2014, 1, 1, 0, 0, 0)
         L2016_death = datetime.datetime(2016, 1, 1, 0, 0, 0)
