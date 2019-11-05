@@ -261,10 +261,16 @@ if __name__ == "__main__":
 
     check_male_last_name(fm,indi)                       #16 --sprint1
 
+
+
+
     check_correct_gender(fm,indi)                       #21 --sprint2
     check_unique_id(Individual_ID_list,Familiy_ID_list) #22 --sprint2
 
     check_unique_fm_by_spouses(fm)                      #24 --sprint3
+
+
+
 
     listDeceased(indi)                                  #29 --sprint3
     check_list_living_married(fm,indi)                  #30 --sprint3
