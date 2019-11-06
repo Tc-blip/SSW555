@@ -18,24 +18,24 @@ def dateBeforeCurrentDate(fm, indi):
         if family.Married != "NA":
             marriage_date = dt.datetime.strptime(family.Married, '%d %b %Y')
             if compareDates(marriage_date, rightNow) != -1:
-                print("Error US01: Marriage date of family " + family.ID + " is not before the current date.")
+                print("ERROR: US01: Marriage date of family " + family.ID + " is not before the current date.")
                 invalidDate += 1
         if family.Divorced != "NA":
             divorce_date = dt.datetime.strptime(family.Divorced, '%d %b %Y')
             if compareDates(divorce_date, rightNow) != -1:
-                print("Error US01: Divorce date of family " + family.ID + " is not before the current date.")
+                print("ERROR: US01: Divorce date of family " + family.ID + " is not before the current date.")
                 invalidDate += 1
 
     for key in indi:
         individual = indi[key]
         birth_date = dt.datetime.strptime(individual.Birthday, '%d %b %Y')
         if compareDates(birth_date, rightNow) != -1:
-            print("Error US01: Birth date of  " + individual.Name + " " + "(" + individual.ID + ") is not before the current date.")
+            print("ERROR: US01: Birth date of  " + individual.Name + " " + "(" + individual.ID + ") is not before the current date.")
             invalidDate += 1
         if individual.Death != "NA":
             death_date = dt.datetime.strptime(individual.Death, '%d %b %Y')
             if compareDates(death_date, rightNow) != -1:
-                print("Error US01: Death date of  " + individual.Name + " " + "(" + individual.ID + ") is not before the current date.")
+                print("ERROR: US01: Death date of  " + individual.Name + " " + "(" + individual.ID + ") is not before the current date.")
                 invalidDate += 1
 
     return invalidDate != 0
@@ -58,10 +58,10 @@ def lessThan150YearsOld(indi):
             if individual.Death != "NA":
                 death_date = dt.datetime.strptime(individual.Death, '%d %b %Y')
                 if differenceBetweenDates(death_date, birth_date) >= 150:
-                    print("Error US07: Death date of  " + individual.Name + " " + "(" + individual.ID + ") is at least 150 years after birth.")
+                    print("ERROR: US07: Death date of  " + individual.Name + " " + "(" + individual.ID + ") is at least 150 years after birth.")
                     allDatesGood += 1
             else:
                 if differenceBetweenDates(rightNow, birth_date) >= 150:
-                    print("Error US07: Birth date of  " + individual.Name + " " + "(" + individual.ID + ") is at least 150 years ago and " + individual.Name + " is still alive.")
+                    print("ERROR: US07: Birth date of  " + individual.Name + " " + "(" + individual.ID + ") is at least 150 years ago and " + individual.Name + " is still alive.")
                     allDatesGood += 1
     return allDatesGood == 0

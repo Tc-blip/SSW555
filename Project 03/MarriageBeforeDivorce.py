@@ -1,3 +1,9 @@
+"""
+CHIH-YU LEE
+US04
+Marriagebeforedivorce
+"""
+
 import datetime as dt
 
 def check_marriage_before_divorce(fm):
@@ -20,6 +26,8 @@ def marriage_before_divorce(marriage_date, divorce_date):
         return True
     else:
         if marriage_date < divorce_date:
+            print(marriage_date)
+            print(divorce_date)
             return True
         else:
             return False
