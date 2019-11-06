@@ -13,7 +13,7 @@ def listing_living_single(indi):
         dt_birth = dt.datetime.strptime(indi[k].Birthday, '%d %b %Y')
         if abs(dt_now - dt_birth).days > 30:
             if check_living_single(indi[k].Death, indi[k].Spouse) == True:
-                print(f"Individual {k}, over 30 years old and alive, has never been married.")
+                print(f"US31: Individual {k}, over 30 years old and alive, has never been married.")
 
 def check_living_single(death,spouse):
     if death == "NA" and spouse == []:
