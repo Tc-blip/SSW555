@@ -239,12 +239,11 @@ def pt_id():
 
 if __name__ == "__main__":
 
-    read_person("Project 03/test1.ged")
+    read_person("test1.ged")
     add_infor()
     pt_id()
     pt_fm()
-
-    # except 26,41 
+# except 26,41 
     dateBeforeCurrentDate(fm, indi)                     #01 --sprint1
     check_Birth_before_marr(fm,pi)                      #02 --sprint1
     check_Birth_before_death(indi)                      #03 --sprint1

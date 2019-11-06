@@ -54,14 +54,14 @@ def lessThan150YearsOld(indi):
     for key in indi:
         individual = indi[key]
         birth_date = dt.datetime.strptime(individual.Birthday, '%d %b %Y')
-        if differenceBetweenDates(rightNow, birth_date) > 150:
+        if differenceBetweenDates(rightNow, birth_date) < -150:
             if individual.Death != "NA":
                 death_date = dt.datetime.strptime(individual.Death, '%d %b %Y')
-                if differenceBetweenDates(death_date, birth_date) >= 150:
+                if differenceBetweenDates(death_date, birth_date) <= -150:
                     print("ERROR: US07: Death date of  " + individual.Name + " " + "(" + individual.ID + ") is at least 150 years after birth.")
                     allDatesGood += 1
             else:
-                if differenceBetweenDates(rightNow, birth_date) >= 150:
+                if differenceBetweenDates(rightNow, birth_date) <= -150:
                     print("ERROR: US07: Birth date of  " + individual.Name + " " + "(" + individual.ID + ") is at least 150 years ago and " + individual.Name + " is still alive.")
                     allDatesGood += 1
     return allDatesGood == 0
