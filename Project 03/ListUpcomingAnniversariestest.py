@@ -4,16 +4,50 @@ import datetime as dt
 from datetime import timedelta
 
 class Person_info:
-    __slots__ = ["ID", 'BIRT', 'DEAT']
-
     def __init__(self,id, Birthday, Death):
         self.ID = id
         self.BIRT = Birthday
         self.DEAT = Death
-        
+
+class Families:
+    def __init__(self,id, married, husband_ID, wife_ID):
+        self.ID = id
+        self.Married = married
+        self.Husband_ID = husband_ID
+        self.Wife_ID = wife_ID
+
+
+f1 = Families('F1','11 FEB 1980','I1','I6')
+f2 = Families('F2','31 JAN 2010','I2','I7')
+f3 = Families('F3','7 FEB 1999','I2','I8')
+f4 = Families('F4','NA',' I1','NA')
+f5 = Families('F5','01 DEC 2000','I9','I8')
+
+class Individuals:
+    def __init__(self,id, alive):
+        self.ID = id
+        self.Alive = alive #"True"
+
+I1 = Individuals('I1','False')
+I2 = Individuals('I2','False')
+I6 = Individuals('I6','True')
+I7 = Individuals('I7','True')
+I8 = Individuals('I8','True')
+I9 = Individuals('I9','True')
+
+fm = {'F1':f1,'F2':f2,'F3':f3,'F4':f4}
+fm2 = {'F1':f1,'F2':f2,'F3':f3,'F4':f4,'F5':f5}
+indi = {'I1':I1,'I2':I2,'I6':I6,'I7':I7,'I8':I8}
+indi2 = {'I1':I1,'I2':I2,'I6':I6,'I7':I7,'I8':I8,'I9':I9}
 
 class Test_List_Upcoming_Anniversaries(unittest.TestCase):
-        
+
+    def test_ListUpcomingAnniversaries(self):
+        fm = {'F1':f1, 'F2':f2,'F3':f3,'F4':f4}
+        indi = {'I1':I1,'I2':I2,'I6':I6,'I7':I7,'I8':I8}
+        self.assertEqual(ListUpcomingAnniversaries(fm,indi),[])
+        self.assertEqual(ListUpcomingAnniversaries(fm2,indi2),['F5'])
+
     def test_convert_to_same_year(self):
         date1 = "01 JAN 2000"
         date2 = "01 JAN 2005"

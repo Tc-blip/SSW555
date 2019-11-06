@@ -5,7 +5,7 @@ import datetime as dt
 from datetime import timedelta
 
 def ListUpcomingAnniversaries(fm, indi):
-
+    
     upcomingAdaylist = []
     for key in fm:
         family = fm[key]
@@ -20,14 +20,20 @@ def ListUpcomingAnniversaries(fm, indi):
 
         if check_if_occur_in_30_days(A_day) == True:
             upcomingAdaylist.append(key)
-    print(f"All living couples whose marriage anniversaries occur in the next 30 days {upcomingAdaylist}")
+    print(f"US39: All living couples whose marriage anniversaries occur in the next 30 days {upcomingAdaylist}")
     return upcomingAdaylist
 
 def check_if_living_couple(family,indi):
     wifeID = family.Wife_ID
     husbandID = family.Husband_ID
+    if wifeID == "NA":
+        print(f"ERROR: FAMILY: US39: {family.ID} missing wife ID")
+        return False
+    if husbandID == "NA":
+        print(f"ERROR: FAMILY: US39: {family.ID} missing husband ID")
+        return False
     if wifeID == "NA" or husbandID == "NA":
-        print(f"Famile {family.ID} missing wife ID")
+        print(f"ERROR: FAMILY: US39: {family.ID} missing wife ID and husband ID")
         return False
 
     w_alive = indi[wifeID].Alive
@@ -38,9 +44,10 @@ def check_if_living_couple(family,indi):
 
 def check_if_occur_in_30_days(marriage_date):
     dt_now = dt.datetime.now()
-    delt_day = (marriage_date.day - dt_now.day)
-    if delt_day <= 30 and delt_day > 0:
-        return True
+    if marriage_date> dt_now:
+        delt_day = abs(marriage_date.day - dt_now.day)
+        if delt_day <= 30 and delt_day > 0:
+            return True
     else:
         return False
 
