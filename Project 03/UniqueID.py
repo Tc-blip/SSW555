@@ -14,11 +14,11 @@ def check_unique_id(indi_list, fm_list):
     duplicate_fm_ID = [item for item, count in collections.Counter(fm_list).items() if count > 1]
 
     for id in duplicate_indi_ID:
-        print(f"ERROR: Individual {id} has already existed!")
+        print(f"ERROR: US22: Individual {id} has already existed!")
         error_ID.append(id)
 
     for id in duplicate_fm_ID:
-        print(f"ERROR: Family {id} has already existed!")
+        print(f"ERROR: US22: Family {id} has already existed!")
         error_ID.append(id)
     
     return error_ID

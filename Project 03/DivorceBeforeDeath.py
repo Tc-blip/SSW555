@@ -11,18 +11,18 @@ def check_divorce_before_death(fm, pi):
         family_wife_ID = family.Wife_ID
         family_divorce_date = family.Divorced
         if family_divorce_date == "NA":
-            print(f"ERROR: FAMILY: US06: {family.ID} missing devorced date!")
+            print(f"ERROR: US06: FAMILY: {family.ID} missing devorced date!")
             continue
         husban_death_date = get_death_date(pi,family_husban_ID)
         wife_death_date = get_death_date(pi,family_wife_ID)
 
         check = divorce_before_death(family_divorce_date, husban_death_date, wife_death_date)
         if check == 1:
-            print(f"ERROR: FAMILY: US06: {family.ID} wife {family_wife_ID} died before devorced date!")
+            print(f"ERROR: US06: FAMILY: {family.ID} wife {family_wife_ID} died before devorced date!")
         elif check == 2:
-            print(f"ERROR: FAMILY: US06: {family.ID} husban {family_husban_ID} died before devorced date!")
+            print(f"ERROR: US06: FAMILY: {family.ID} husban {family_husban_ID} died before devorced date!")
         elif check == 3:
-            print(f"ERROR: FAMILY: US06: {family.ID} wife {family_wife_ID} and husban {family_husban_ID} died before devorced date!")
+            print(f"ERROR: US06: FAMILY: {family.ID} wife {family_wife_ID} and husban {family_husban_ID} died before devorced date!")
 
 def divorce_before_death(family_divorce_date, husban_death_date, wife_death_date):
     # return 1 means wife died before marriage!
