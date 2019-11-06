@@ -19,7 +19,7 @@ def birthAfterMarriage_par(fm, pi):
             for child in i.Children:
                 bday = pi[child].BIRT
                 if not birthAfterMarriageOfParents(bday, wedding_date, divorce_date):
-                    print(f'Error: {pi[child].NAME} was born before the parents\'s wedding or more than 9 months after the divorce.')
+                    print(f'Error US08: {pi[child].NAME} was born before the parents\'s wedding or more than 9 months after the divorce.')
 
 #US09   Birth before marriage of parents
 def birthBeforeDeath_par(fm, pi):
@@ -30,7 +30,7 @@ def birthBeforeDeath_par(fm, pi):
             for child in i.Children:
                 bday = pi[child].BIRT
                 if not birthBeforeDeathOfParents(bday, wife_death, hus_death):
-                    print(f'Error: {pi[child].NAME} was born after the death of the mother or after 9 months after the death of the father')
+                    print(f'Error US09: {pi[child].NAME} was born after the death of the mother or after 9 months after the death of the father')
 
 
 def birthAfterMarriageOfParents(child_bday, wedding_date, divorce_date):
