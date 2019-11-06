@@ -26,8 +26,6 @@ def marriage_before_divorce(marriage_date, divorce_date):
         return True
     else:
         if marriage_date < divorce_date:
-            print(marriage_date)
-            print(divorce_date)
             return True
         else:
             return False
