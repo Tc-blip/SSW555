@@ -50,5 +50,5 @@ def List_recent_survivors(fm, indi):
                     if indi[k].Alive == "True":
                         list_living_children.append(indi[k].Name)
 
-        print(f"US37 {indi[i].Name} died in the last 30 days, living spouse {list_living_spouses}, living children {list_living_children}")
+        print(f"ERROR: US37： {indi[i].Name} died in the last 30 days, living spouse {list_living_spouses}, living children {list_living_children}")
         return f"{indi[i].Name} died in the last 30 days, living spouse {list_living_spouses}, living children {list_living_children}"
