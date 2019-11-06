@@ -23,7 +23,7 @@ def noBigamy(fm):
                         div_date = dt.datetime.strptime(family.Divorced, '%d %b %Y')
                         mar_date = dt.datetime.strptime(family2.Married, '%d %b %Y')
                         if compareDates(div_date, mar_date) != -1:
-                            print("Error US11: " + fm[key].Husband_Name + " " + husband_id + " in family " + fm[key].ID + " married again before getting a divorce.")
+                            print("ERROR: US11: " + fm[key].Husband_Name + " " + husband_id + " in family " + fm[key].ID + " married again before getting a divorce.")
                             bigamy += 1
                     if family2.Divorced != "NA":
                         div_date = dt.datetime.strptime(family2.Divorced, '%d %b %Y')
