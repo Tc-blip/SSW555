@@ -12,7 +12,7 @@ def multiple_birth(fm,pi):
         child_birth_dict = check_children_birthday(children,pi)
         check = check_if_more_than_5_children(child_birth_dict)
         if check == False:
-            print(f'Family {family.ID} has more than five siblings born at the same time!')
+            print(f'ERROR: FAMILY: US13: {family.ID} has more than five siblings born at the same time!')
 
 def check_children_birthday(children,pi):
     child_birth_dict = {}

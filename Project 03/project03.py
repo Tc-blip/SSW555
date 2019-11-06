@@ -239,48 +239,50 @@ def pt_id():
 
 if __name__ == "__main__":
 
-    read_person("test1.ged")
+    read_person("Project 03/test1.ged")
     add_infor()
     pt_id()
     pt_fm()
+# except 26,41 
+    dateBeforeCurrentDate(fm, indi)                     #01 --sprint1
+    check_Birth_before_marr(fm,pi)                      #02 --sprint1
+    check_Birth_before_death(indi)                      #03 --sprint1
+    check_marriage_before_divorce(fm)                   #04 --sprint1
+    check_marriage_before_death(fm,pi)                  #05 --sprint1
+    check_divorce_before_death(fm,pi)                   #06 --sprint2
+    lessThan150YearsOld(indi)                           #07 --sprint1
+    birthAfterMarriage_par(fm, pi)                      #08 --sprint1
+    birthBeforeDeath_par(fm, pi)                        #09 --sprint1
+    marriageAfter14(fm, pi)                             #10 --sprint2
+    noBigamy(fm)                                        #11 --sprint2
+    check_parents_not_old(fm,indi)                      #12 --sprint1
+    check_siblingSpacing(fm, pi)                        #28 and 13 --sprint2
+    multiple_birth(fm,pi)                               #14 --sprint2
 
-    dateBeforeCurrentDate(fm, indi) #01
-    lessThan150YearsOld(indi) #07
+    check_male_last_name(fm,indi)                       #16 --sprint1
 
-    birthAfterMarriage_par(fm, pi)
-    birthBeforeDeath_par(fm, pi)
 
-    check_Birth_before_marr(fm,pi) #us02
-    check_Birth_before_death(indi) #us03
 
-    check_marriage_before_divorce(fm) #04
-    check_marriage_before_death(fm,pi) #05
 
-    check_male_last_name(fm,indi)#16
-    check_parents_not_old(fm,indi)#12
+    check_correct_gender(fm,indi)                       #21 --sprint2
+    check_unique_id(Individual_ID_list,Familiy_ID_list) #22 --sprint2
 
-    check_divorce_before_death(fm,pi) #06
-    multiple_birth(fm,pi) #14
+    check_unique_fm_by_spouses(fm)                      #24 --sprint3
 
-    check_siblingSpacing(fm, pi) #28 and 13
 
-    noBigamy(fm) #11
-    marriageAfter14(fm, pi) #10
 
-    list_born_in_30(indi) #35
-    list_died_in_30(indi) #36
 
-    check_correct_gender(fm,indi)#21
-    check_unique_id(Individual_ID_list,Familiy_ID_list)#22
+    listDeceased(indi)                                  #29 --sprint3
+    check_list_living_married(fm,indi)                  #30 --sprint3
+    listing_living_single(indi)                         #31 --sprint3
 
-    ListUpcomingBirthdays(pi) #38
-    ListUpcomingAnniversaries(fm,indi) #39
+
+    listLargeAgeDifferences(fm, indi)                   #34 --sprint3
+    list_born_in_30(indi)                               #35 --sprint2
+    list_died_in_30(indi)                               #36 --sprint2
+    List_recent_survivors(fm,indi)                      #37 --sprint3
+    ListUpcomingBirthdays(pi)                           #38 --sprint3
+    ListUpcomingAnniversaries(fm,indi)                  #39 --sprint3
     
-    
-    check_list_living_married(fm,indi)#30
-    listing_living_single(indi)#31
-    check_unique_fm_by_spouses(fm) #24
-    List_recent_survivors(fm,indi) #37
 
-    listDeceased(indi) #29
-    listLargeAgeDifferences(fm, indi) #34
+
