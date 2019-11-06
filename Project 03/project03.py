@@ -23,6 +23,8 @@ from List_living_married import check_list_living_married
 from List_living_single import listing_living_single
 from US29 import listDeceased
 from US34 import listLargeAgeDifferences
+from lessThanFifteen import check_lessThanFifteen
+from uniqueNameBday import check_uniqueNameBday
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -238,8 +240,7 @@ def pt_id():
 
 
 if __name__ == "__main__":
-
-    read_person("Project 03/test1.ged")
+  read_person("Project 03/test1.ged")
     add_infor()
     pt_id()
     pt_fm()
@@ -257,9 +258,9 @@ if __name__ == "__main__":
     marriageAfter14(fm, pi)                             #10 --sprint 2
     noBigamy(fm)                                        #11 --sprint 2
     check_parents_not_old(fm,indi)                      #12 --sprint 1
-    check_siblingSpacing(fm, pi)                        #28 and 13 --sprint 2
+    check_siblingSpacing(fm, pi)                        #13 and 28 --sprint 2
     multiple_birth(fm,pi)                               #14 --sprint 2
-
+    check_lessThanFifteen(fm)                           #15 --sprint 3
     check_male_last_name(fm,indi)                       #16 --sprint 1
 
 
@@ -267,9 +268,8 @@ if __name__ == "__main__":
 
     check_correct_gender(fm,indi)                       #21 --sprint 2
     check_unique_id(Individual_ID_list,Familiy_ID_list) #22 --sprint 2
-
+    check_uniqueNameBday(pi)                            #23 --sprint 3
     check_unique_fm_by_spouses(fm)                      #24 --sprint 3
-
 
 
 
@@ -284,6 +284,4 @@ if __name__ == "__main__":
     List_recent_survivors(fm,indi)                      #37 --sprint 3
     ListUpcomingBirthdays(pi)                           #38 --sprint 3
     ListUpcomingAnniversaries(fm,indi)                  #39 --sprint 3
-    
-
-
+ 
