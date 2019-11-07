@@ -14,6 +14,7 @@ def listSiblings(children):
         return []
     child_list = children
     child_list.sort(reverse=True, key=getAge)
+    print('US28: List siblings in decreasing age order')
     return child_list
 
 #US13
@@ -27,7 +28,7 @@ def check_siblingSpacing(fm, pi):
             for childID in family.Children:
                 new_child_list.append(pi[childID])
             if not siblingSpacing(new_child_list):
-                print(f'Error: Children should not be born more than 2 days or less than 8 months apart')
+                print(f'Error US13: Children should not be born more than 2 days or less than 8 months apart')
 
 def siblingSpacing(children):
     ''' Birthdays should be more than 8 months apart or less than 2 days apart '''

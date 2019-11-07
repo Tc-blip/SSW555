@@ -1,3 +1,9 @@
+"""
+CHIH-YU LEE
+US04
+Marriagebeforedivorce
+"""
+
 import datetime as dt
 
 def check_marriage_before_divorce(fm):
@@ -13,7 +19,7 @@ def check_marriage_before_divorce(fm):
 
         #check if marriage_before_divorce
         if marriage_before_divorce(marriage_date, divorced_date) == False:
-            print(f'ERROR: FAMILY: US04: {family_key} marriage after divorce!' )
+            print(f'ERROR: US04: FAMILY: {family_key} marriage after divorce!' )
 
 def marriage_before_divorce(marriage_date, divorce_date):
     if divorce_date == "NA":
