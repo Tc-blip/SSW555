@@ -279,13 +279,10 @@ if __name__ == "__main__":
     check_list_living_married(fm,indi)                  #30 --sprint 3
     listing_living_single(indi)                         #31 --sprint 3
     listMultipleBirths(fm, pi)                          #32 --sprint 4
-
+    listOrphans(fm,indi)                                #33 --sprint 4
     listLargeAgeDifferences(fm, indi)                   #34 --sprint 3
     list_born_in_30(indi)                               #35 --sprint 2
     list_died_in_30(indi)                               #36 --sprint 2
     List_recent_survivors(fm,indi)                      #37 --sprint 3
     ListUpcomingBirthdays(pi)                           #38 --sprint 3
     ListUpcomingAnniversaries(fm,indi)                  #39 --sprint 3
-
-    
-    #listOrphans(fm,indi)                                #33 --sprint 4

@@ -7,18 +7,24 @@ List all orphaned children (both parents dead and child < 18 years old) in a GED
 def listOrphans(fm, indi):
     orphans_list = []
     for individual in indi:
-        if int(indi[individual].Age) >= 18:
+        if indi[individual].Age != 'NA' and int(indi[individual].Age) >= 18:
             continue
         else:
-            print(individual)
+            individual_family_list = indi[individual].Spouse
+            if individual_family_list:
+                for i in individual_family_list:
+                    family = fm[i]
+                    parent_dead = check_if_both_parents_died(family,indi)
+                    print(parent_dead)
+                if parent_dead == True:
+                    orphans_list.append(individual)
+
+    print(f'US33: list Orphans {orphans_list}')
     return orphans_list
 
-def check_if_both_parents_dead(fm,familyID):
-    
 
-    return True
-
-
-def check_if_child_under_18():
-
-    return True
+def check_if_both_parents_died(family,indi):
+    if indi[family.Husband_ID].Alive == 'False' and indi[family.Wife_ID].Alive == 'False':
+        return True
+    else:
+        return False

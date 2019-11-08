@@ -15,13 +15,11 @@ def listMultipleBirths(fm,pi):
             continue
         else:
             fm_child_bith_dict = {}
-
             for child in fm_cild:
                 if not pi[child].BIRT in fm_child_bith_dict:
                     fm_child_bith_dict[pi[child].BIRT] = [child]
                 else:
                     fm_child_bith_dict[pi[child].BIRT].append(child)
-
         for key, value in fm_child_bith_dict.items():
             if len(value)>=2:
                 fm_multi_bith.append([key,value])
