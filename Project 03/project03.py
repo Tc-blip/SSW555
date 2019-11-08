@@ -25,6 +25,8 @@ from US29 import listDeceased
 from US34 import listLargeAgeDifferences
 from lessThanFifteen import check_lessThanFifteen
 from uniqueNameBday import check_uniqueNameBday
+from ListMultipleBirths import listMultipleBirths
+from ListOrphans import listOrphans
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -240,7 +242,7 @@ def pt_id():
 
 
 if __name__ == "__main__":
-    read_person("test1.ged")
+    read_person("Project 03/test1.ged")
     add_infor()
     pt_id()
     pt_fm()
@@ -276,7 +278,7 @@ if __name__ == "__main__":
     listDeceased(indi)                                  #29 --sprint 3
     check_list_living_married(fm,indi)                  #30 --sprint 3
     listing_living_single(indi)                         #31 --sprint 3
-
+    listMultipleBirths(fm, pi)                          #32 --sprint 4
 
     listLargeAgeDifferences(fm, indi)                   #34 --sprint 3
     list_born_in_30(indi)                               #35 --sprint 2
@@ -285,3 +287,5 @@ if __name__ == "__main__":
     ListUpcomingBirthdays(pi)                           #38 --sprint 3
     ListUpcomingAnniversaries(fm,indi)                  #39 --sprint 3
 
+    
+    #listOrphans(fm,indi)                                #33 --sprint 4
