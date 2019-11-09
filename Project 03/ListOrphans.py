@@ -15,13 +15,10 @@ def listOrphans(fm, indi):
                 for i in individual_family_list:
                     family = fm[i]
                     parent_dead = check_if_both_parents_died(family,indi)
-                    print(parent_dead)
                 if parent_dead == True:
                     orphans_list.append(individual)
-
     print(f'US33: list Orphans {orphans_list}')
     return orphans_list
-
 
 def check_if_both_parents_died(family,indi):
     if indi[family.Husband_ID].Alive == 'False' and indi[family.Wife_ID].Alive == 'False':
