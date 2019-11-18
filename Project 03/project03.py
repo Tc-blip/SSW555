@@ -27,7 +27,7 @@ from lessThanFifteen import check_lessThanFifteen
 from uniqueNameBday import check_uniqueNameBday
 from ListMultipleBirths import listMultipleBirths
 from ListOrphans import listOrphans
-
+from us17 import NoMarrDesc
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
 
@@ -253,20 +253,18 @@ if __name__ == "__main__":
     check_Birth_before_death(indi)                      #03 --sprint 1
     check_marriage_before_divorce(fm)                   #04 --sprint 1
     check_marriage_before_death(fm,pi)                  #05 --sprint 1
-    check_divorce_before_death(fm,pi)                   #06 --sprint 2
+    #check_divorce_before_death(fm,pi)                   #06 --sprint 2
     lessThan150YearsOld(indi)                           #07 --sprint 1
     birthAfterMarriage_par(fm, pi)                      #08 --sprint 1
     birthBeforeDeath_par(fm, pi)                        #09 --sprint 1
     marriageAfter14(fm, pi)                             #10 --sprint 2
     noBigamy(fm)                                        #11 --sprint 2
     check_parents_not_old(fm,indi)                      #12 --sprint 1
-    check_siblingSpacing(fm, pi)                        #13 and 28 --sprint 2
+    #check_siblingSpacing(fm, pi)                        #13 and 28 --sprint 2
     multiple_birth(fm,pi)                               #14 --sprint 2
     check_lessThanFifteen(fm)                           #15 --sprint 3
     check_male_last_name(fm,indi)                       #16 --sprint 1
-
-
-
+    NoMarrDesc(fm,indi)                                 #17 --sprint 4
 
     check_correct_gender(fm,indi)                       #21 --sprint 2
     check_unique_id(Individual_ID_list,Familiy_ID_list) #22 --sprint 2
