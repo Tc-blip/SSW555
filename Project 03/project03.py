@@ -27,6 +27,7 @@ from lessThanFifteen import check_lessThanFifteen
 from uniqueNameBday import check_uniqueNameBday
 from ListMultipleBirths import listMultipleBirths
 from ListOrphans import listOrphans
+from us17 import NoMarrDesc
 from US18 import noSiblingMarriage
 from US19 import noCousinMarriage
 
@@ -266,7 +267,7 @@ if __name__ == "__main__":
     multiple_birth(fm,pi)                               #14 --sprint 2
     check_lessThanFifteen(fm)                           #15 --sprint 3
     check_male_last_name(fm,indi)                       #16 --sprint 1
-
+    NoMarrDesc(fm, indi)                                #17 --sprint 4
     noSiblingMarriage(fm)                               #18 --sprint 4
     noCousinMarriage(fm)                                #19 --sprint 4
 
