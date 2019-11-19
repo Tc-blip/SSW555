@@ -22,7 +22,7 @@ def marriage_before_death(family_ID,husband_ID,wife_ID):
     
     marriage_date = family_ID.Married
     if marriage_date == "NA":
-        return print(f'ERROR: FAMILY: US05: {family_ID.ID} missing family marriage date!')   
+        return print(f'ERROR: US05: FAMILY: {family_ID.ID} missing family marriage date!')   
 
     if husband_ID != "NA":
         husband_death_date = husband_ID.DEAT
@@ -41,11 +41,11 @@ def marriage_before_death(family_ID,husband_ID,wife_ID):
     result = check_if_marriage_before_death(marriage_date, husband_death_date, wife_death_date)
     
     if result =='1':
-        print(f'ERROR: FAMILY: US05: {family_ID.ID} wife{wife_ID.ID} die before marriage!')
+        print(f'ERROR: US05: FAMILY: {family_ID.ID} wife{wife_ID.ID} die before marriage!')
     if result =='2':
-        print(f'ERROR: FAMILY: US05: {family_ID.ID} husband{husband_ID.ID} die before marriage!')
+        print(f'ERROR: US05: FAMILY: {family_ID.ID} husband{husband_ID.ID} die before marriage!')
     if result =='3':
-        print(f'ERROR: FAMILY: US05: {family_ID.ID} both parents die before marriage!')
+        print(f'ERROR: US05: FAMILY: {family_ID.ID} both parents die before marriage!')
     
 def check_if_marriage_before_death(marriage_date, husband_death_date, wife_death_date):
     # return 1 means wife die before marriage.
