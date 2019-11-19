@@ -9,7 +9,7 @@ def check_list_living_married(fm,indi):
     for k, v in fm.items():
         if list_living_married(v.Married, v.Divorced) is True:
             if indi[v.Husband_ID].Death == "NA" and indi[v.Wife_ID].Death == "NA":
-                print(f"US 30: In family {k}, {v.Husband_ID} and {v.Wife_ID} are married in {v.Married}")
+                print(f"US30: In family {k}, {v.Husband_ID} and {v.Wife_ID} are married in {v.Married}")
 
 def list_living_married(a,b):
     if a != 'NA' and b == "NA":
