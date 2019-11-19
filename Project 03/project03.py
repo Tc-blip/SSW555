@@ -19,6 +19,15 @@ from ListUpcomingBirthdays import ListUpcomingBirthdays
 from ListUpcomingAnniversaries import ListUpcomingAnniversaries
 from US24 import check_unique_fm_by_spouses
 from US37 import List_recent_survivors
+from List_living_married import check_list_living_married
+from List_living_single import listing_living_single
+from US29 import listDeceased
+from US34 import listLargeAgeDifferences
+from lessThanFifteen import check_lessThanFifteen
+from uniqueNameBday import check_uniqueNameBday
+from AuntAndUncles import check_Aunt_and_Uncles
+from CorrespondingEntries import check_Corresponding_Entries
+import unittest
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -151,8 +160,8 @@ def file_reader(path):
 pi = {}   #person information dict
 indi = {}  #indiv information dict
 fm = {}     #family information dic
-Individual_ID_list = []  
-Familiy_ID_list =[]
+Individual_ID_list = []  #individual ID list
+Familiy_ID_list =[]     #family ID list
 
 
 def read_person(path):
@@ -232,48 +241,64 @@ def pt_id():
     print(pt)
 
 
+class TestUserStory(unittest.TestCase):
+    
+    def test_check_Aunt_and_Uncles(self):
+        self.assertEqual(check_Aunt_and_Uncles(fm,indi), {'@F9@'})
+
+    def test_check_Corresponding_Entries(self):
+        self.assertEqual(check_Corresponding_Entries(fm, indi), {'@I15@', '@I14@'})
+
+
+
 
 if __name__ == "__main__":
-
-    read_person("test1.ged")
+    read_person("/Users/apple/Desktop/Code/555/Project3/test1.ged")
     add_infor()
     pt_id()
     pt_fm()
-
-    dateBeforeCurrentDate(fm, indi) #01
-    lessThan150YearsOld(indi) #07
-
-    birthAfterMarriage_par(fm, pi)
-    birthBeforeDeath_par(fm, pi)
-
-    check_Birth_before_marr(fm,pi) #us02
-    check_Birth_before_death(indi) #us03
-
-    check_marriage_before_divorce(fm) #04
-    check_marriage_before_death(fm,pi) #05
-
-    check_male_last_name(fm,indi)#16
-    check_parents_not_old(fm,indi)#12
-
-    check_divorce_before_death(fm,pi) #06
-    multiple_birth(fm,pi) #14
-
-    check_siblingSpacing(fm, pi) #28 and 13
-
-    noBigamy(fm) #11
-    marriageAfter14(fm, pi) #10
-
-    list_born_in_30(indi) #35
-    list_died_in_30(indi) #36
-
-    check_correct_gender(fm,indi)#21
-    check_unique_id(Individual_ID_list,Familiy_ID_list)#22
-
-    ListUpcomingBirthdays(pi) #38
-    ListUpcomingAnniversaries(fm,indi) #39
     
-    
-    check_list_living_married(fm,indi)#30
-    listing_living_single(indi)#31
-    check_unique_fm_by_spouses(fm) #24
-    List_recent_survivors(fm,indi) #37
+
+    # except US26,41
+    dateBeforeCurrentDate(fm, indi)                     #01 --sprint 1
+    check_Birth_before_marr(fm,pi)                      #02 --sprint 1
+    check_Birth_before_death(indi)                      #03 --sprint 1
+    check_marriage_before_divorce(fm)                   #04 --sprint 1
+    check_marriage_before_death(fm,pi)                  #05 --sprint 1
+    check_divorce_before_death(fm,pi)                   #06 --sprint 2
+    lessThan150YearsOld(indi)                           #07 --sprint 1
+    birthAfterMarriage_par(fm, pi)                      #08 --sprint 1
+    birthBeforeDeath_par(fm, pi)                        #09 --sprint 1
+    marriageAfter14(fm, pi)                             #10 --sprint 2
+    noBigamy(fm)                                        #11 --sprint 2
+    check_parents_not_old(fm,indi)                      #12 --sprint 1
+    check_siblingSpacing(fm, pi)                        #13 and 28 --sprint 2
+    multiple_birth(fm,pi)                               #14 --sprint 2
+    check_lessThanFifteen(fm)                           #15 --sprint 3
+    check_male_last_name(fm,indi)                       #16 --sprint 1
+
+
+
+
+    check_correct_gender(fm,indi)                       #21 --sprint 2
+    check_unique_id(Individual_ID_list,Familiy_ID_list) #22 --sprint 2
+    check_uniqueNameBday(pi)                            #23 --sprint 3
+    check_unique_fm_by_spouses(fm)                      #24 --sprint 3
+
+
+
+    listDeceased(indi)                                  #29 --sprint 3
+    check_list_living_married(fm,indi)                  #30 --sprint 3
+    listing_living_single(indi)                         #31 --sprint 3
+
+
+    listLargeAgeDifferences(fm, indi)                   #34 --sprint 3
+    list_born_in_30(indi)                               #35 --sprint 2
+    list_died_in_30(indi)                               #36 --sprint 2
+    List_recent_survivors(fm,indi)                      #37 --sprint 3
+    ListUpcomingBirthdays(pi)                           #38 --sprint 3
+    ListUpcomingAnniversaries(fm,indi)                  #39 --sprint 3
+
+    check_Aunt_and_Uncles(fm,indi)                      #20 --sprint 4
+    check_Corresponding_Entries(fm,indi)                #26 --sprint 4
+    unittest.main()

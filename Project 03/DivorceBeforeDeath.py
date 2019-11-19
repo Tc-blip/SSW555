@@ -1,6 +1,7 @@
 """
 Author CYL
 sprint 2: User story 06
+Divorce can only occur before death of both spouses
 """
 import datetime as dt
 def check_divorce_before_death(fm, pi):
@@ -10,13 +11,18 @@ def check_divorce_before_death(fm, pi):
         family_wife_ID = family.Wife_ID
         family_divorce_date = family.Divorced
         if family_divorce_date == "NA":
-            print(f"Family {family.ID} missing devorced date!")
+            print(f"ERROR: US06: FAMILY: {family.ID} missing devorced date!")
+            continue
         husban_death_date = get_death_date(pi,family_husban_ID)
         wife_death_date = get_death_date(pi,family_wife_ID)
 
         check = divorce_before_death(family_divorce_date, husban_death_date, wife_death_date)
-        if check == False:
-            print()
+        if check == 1:
+            print(f"ERROR: US06: FAMILY: {family.ID} wife {family_wife_ID} died before devorced date!")
+        elif check == 2:
+            print(f"ERROR: US06: FAMILY: {family.ID} husban {family_husban_ID} died before devorced date!")
+        elif check == 3:
+            print(f"ERROR: US06: FAMILY: {family.ID} wife {family_wife_ID} and husban {family_husban_ID} died before devorced date!")
 
 def divorce_before_death(family_divorce_date, husban_death_date, wife_death_date):
     # return 1 means wife died before marriage!
@@ -25,7 +31,7 @@ def divorce_before_death(family_divorce_date, husban_death_date, wife_death_date
     if family_divorce_date == "NA":
         return True
     else:
-        family_divorce_date = dt.datetime.strptime(family_divorce_date, '%d %b %Y')
+        family_divorce_date = dt.datetime.strptime(family_divorce_date,  '%d %b %Y')
         if husban_death_date == "NA" and wife_death_date == "NA":
             return True
 
