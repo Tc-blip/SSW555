@@ -27,7 +27,9 @@ from lessThanFifteen import check_lessThanFifteen
 from uniqueNameBday import check_uniqueNameBday
 from ListMultipleBirths import listMultipleBirths
 from ListOrphans import listOrphans
-from us17 import NoMarrDesc
+from US18 import noSiblingMarriage
+from US19 import noCousinMarriage
+
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
 
@@ -242,7 +244,7 @@ def pt_id():
 
 
 if __name__ == "__main__":
-    read_person("Project 03/test1.ged")
+    read_person("test1.ged")
     add_infor()
     pt_id()
     pt_fm()
@@ -264,7 +266,9 @@ if __name__ == "__main__":
     multiple_birth(fm,pi)                               #14 --sprint 2
     check_lessThanFifteen(fm)                           #15 --sprint 3
     check_male_last_name(fm,indi)                       #16 --sprint 1
-    NoMarrDesc(fm,indi)                                 #17 --sprint 4
+
+    noSiblingMarriage(fm)                               #18 --sprint 4
+    noCousinMarriage(fm)                                #19 --sprint 4
 
     check_correct_gender(fm,indi)                       #21 --sprint 2
     check_unique_id(Individual_ID_list,Familiy_ID_list) #22 --sprint 2
