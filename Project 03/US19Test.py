@@ -49,7 +49,7 @@ class TestUS19(unittest.TestCase):
 
     def test_findChildren(self):
         fm1 = Families("F1", "I1", "Andrew", "I2", "Betty", ["I3", "I5"])
-        fm2 = Families("F2", "I3", "Charlie", "I4", "Dorothy", ["I7"])s
+        fm2 = Families("F2", "I3", "Charlie", "I4", "Dorothy", ["I7"])
         fm3 = Families("F3", "I5", "Edward", "I6", "Francesca", ["I8"])
         fm4 = Families("F4", "I7", "George", "I8", "Harriet", [])
         fm5 = Families("F5", "I9", "Inigo", "I10", "Julia", [])
