@@ -12,5 +12,15 @@ def check_unique_fm_by_spouses(fm):
         if (i.Married,i.Husband_Name,i.Wife_Name) not in family_list:
             family_list.append((i.Married, i.Husband_Name, i.Wife_Name))
         else:
-            print(f"ERROR: US24: same has already in GEDCOM {(i.Married,i.Husband_Name,i.Wife_Name)}")
-            return f"Error, same has already in GEDCOM {(i.Married,i.Husband_Name,i.Wife_Name)}"
+            print(f"ERROR: US24:  same spouses by name and the same marriage date has already in GEDCOM {i.ID}")
+          
+        if (i.Married,i.Husband_Name) not in family_list:
+            family_list.append((i.Married,i.Husband_Name))
+        else:
+            print(f"ERROR: US24: same husband by name and the same marriage date has already in GEDCOM {i.ID}")
+          
+        if (i.Married,i.Wife_Name) not in family_list:
+            family_list.append((i.Married,i.Wife_Name))
+        else:
+            print(f"ERROR: US24:  same wife by name and the same marriage date has already in GEDCOM {i.ID}")
+        
