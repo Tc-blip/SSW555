@@ -28,7 +28,11 @@ from uniqueNameBday import check_uniqueNameBday
 from ListMultipleBirths import listMultipleBirths
 from ListOrphans import listOrphans
 from us17 import NoMarrDesc
+
 from us25 import check_unique_first_name_fm
+
+from US18 import noSiblingMarriage
+from US19 import noCousinMarriage
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -266,7 +270,9 @@ if __name__ == "__main__":
     multiple_birth(fm,pi)                               #14 --sprint 2
     check_lessThanFifteen(fm)                           #15 --sprint 3
     check_male_last_name(fm,indi)                       #16 --sprint 1
-    NoMarrDesc(fm,indi)                                 #17 --sprint 4
+    NoMarrDesc(fm, indi)                                #17 --sprint 4
+    noSiblingMarriage(fm)                               #18 --sprint 4
+    noCousinMarriage(fm)                                #19 --sprint 4
 
     check_correct_gender(fm,indi)                       #21 --sprint 2
     check_unique_id(Individual_ID_list,Familiy_ID_list) #22 --sprint 2
