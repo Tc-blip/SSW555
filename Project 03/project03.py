@@ -34,6 +34,7 @@ from AuntAndUncles import check_Aunt_and_Uncles
 from CorrespondingEntries import check_Corresponding_Entries
 import unittest
 from listAges import listAges
+from us25 import check_unique_first_name_fm
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -286,7 +287,7 @@ class TestUserStory(unittest.TestCase):
         self.assertEqual(check_Corresponding_Entries(fm, indi), {'@I15@', '@I14@'})
 
 if __name__ == "__main__":
-    read_person("/Users/apple/Documents/GitHub/SSW555/Project 03/test1.ged")
+    read_person("Project 03/test1.ged")
     add_infor()
     pt_id()
     pt_fm()
@@ -316,6 +317,7 @@ if __name__ == "__main__":
     check_unique_id(Individual_ID_list,Familiy_ID_list) #22 --sprint 2
     check_uniqueNameBday(pi)                            #23 --sprint 3
     check_unique_fm_by_spouses(fm)                      #24 --sprint 3
+    check_unique_first_name_fm(fm,indi)                 #25 --sprint 4
 
     check_Corresponding_Entries(fm,indi)                #26 --sprint 4
     listAges(indi)                                      #27 --sprint 4
