@@ -286,12 +286,12 @@ class TestUserStory(unittest.TestCase):
         self.assertEqual(check_Corresponding_Entries(fm, indi), {'@I15@', '@I14@'})
 
 if __name__ == "__main__":
-    read_person("test1.ged")
+    read_person("/Users/apple/Documents/GitHub/SSW555/Project 03/test1.ged")
     add_infor()
     pt_id()
     pt_fm()
 
-    # except US26,41
+    # except US40,41
     dateBeforeCurrentDate(fm, indi)                     #01 --sprint 1
     check_Birth_before_marr(fm,pi)                      #02 --sprint 1
     check_Birth_before_death(indi)                      #03 --sprint 1
