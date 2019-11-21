@@ -4,4 +4,4 @@ python:
 install:
   - pip install -r requirements.txt
 script: 
-  python "US34.py"
+  python "US34Test.py"
