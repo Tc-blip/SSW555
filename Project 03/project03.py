@@ -28,11 +28,13 @@ from uniqueNameBday import check_uniqueNameBday
 from ListMultipleBirths import listMultipleBirths
 from ListOrphans import listOrphans
 from us17 import NoMarrDesc
-
 from us25 import check_unique_first_name_fm
-
 from US18 import noSiblingMarriage
 from US19 import noCousinMarriage
+from AuntAndUncles import check_Aunt_and_Uncles
+from CorrespondingEntries import check_Corresponding_Entries
+import unittest
+
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -246,6 +248,18 @@ def pt_id():
     print(pt)
 
 
+class TestUserStory(unittest.TestCase):
+    #tests for user story 20 & 26
+    
+    def test_check_Aunt_and_Uncles(self):
+        '''US 20 test '''
+        self.assertEqual(check_Aunt_and_Uncles(fm,indi), {'@F9@'})
+
+    def test_check_Corresponding_Entries(self):
+        ''' US 26 test'''
+        self.assertEqual(check_Corresponding_Entries(fm, indi), {'@I15@', '@I14@'})
+
+
 
 if __name__ == "__main__":
     read_person("Project 03/test1.ged")
@@ -273,12 +287,15 @@ if __name__ == "__main__":
     NoMarrDesc(fm, indi)                                #17 --sprint 4
     noSiblingMarriage(fm)                               #18 --sprint 4
     noCousinMarriage(fm)                                #19 --sprint 4
+    check_Aunt_and_Uncles(fm,indi)                      #20 --sprint 4
 
     check_correct_gender(fm,indi)                       #21 --sprint 2
     check_unique_id(Individual_ID_list,Familiy_ID_list) #22 --sprint 2
     check_uniqueNameBday(pi)                            #23 --sprint 3
     check_unique_fm_by_spouses(fm)                      #24 --sprint 3
     check_unique_first_name_fm(fm,indi)                 #25 --sprint 4
+    check_Corresponding_Entries(fm,indi)                #26 --sprint 4
+
 
 
     listDeceased(indi)                                  #29 --sprint 3
@@ -292,3 +309,6 @@ if __name__ == "__main__":
     List_recent_survivors(fm,indi)                      #37 --sprint 3
     ListUpcomingBirthdays(pi)                           #38 --sprint 3
     ListUpcomingAnniversaries(fm,indi)                  #39 --sprint 3
+
+    unittest.main()                                     #20&26 test --sprint 4
+
