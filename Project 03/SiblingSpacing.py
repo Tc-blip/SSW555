@@ -19,14 +19,12 @@ def listSiblings(children):
 
 #US13
 
-def check_siblingSpacing(fm, pi):
+def check_siblingSpacing(fm, indi):
     for family in fm.values():
-        if len(family.Children) == 0:
-            return
-        else:
+        if len(family.Children) > 0:
             new_child_list = []
             for childID in family.Children:
-                new_child_list.append(pi[childID])
+                new_child_list.append(indi[childID])
             if not siblingSpacing(new_child_list):
                 print(f'Error US13: Children should not be born more than 2 days or less than 8 months apart')
 

@@ -30,6 +30,7 @@ from ListOrphans import listOrphans
 from us17 import NoMarrDesc
 from US18 import noSiblingMarriage
 from US19 import noCousinMarriage
+from listAges import listAges
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -50,10 +51,24 @@ class Person_info:
         self.SEX= sex
 
     def add_birth(self,birth):
-        self.BIRT = birth
+        try:
+            dt.datetime.strptime(birth, '%d %b %Y')
+        except:
+            print(f"US42 Error: Date {birth} is not a valid date!")
+            # Default date to set to not break other functions
+            self.BIRT = "11 Nov 2019"
+        else:
+            self.BIRT = birth
 
     def add_deat(self, deat):
-        self.DEAT = deat
+        try:
+            dt.datetime.strptime(deat, '%d %b %Y')
+        except:
+            print(f"US42 Error: Date {deat} is not a valid date!")
+            # Default date to set to not break other functions
+            self.DEAT = "11 Nov 2019"
+        else:
+            self.DEAT = deat
 
     def add_famc(self,famc):
         self.FAMC = famc
@@ -129,7 +144,14 @@ class Families:
         self.Children = []
 
     def add_marr(self,marr):
-        self.Married = marr
+        try:
+            dt.datetime.strptime(marr, '%d %b %Y')
+        except:
+            print(f"US42 Error: Date {marr} is not a valid date!")
+            # Default date to set to not break other functions
+            self.Married = "11 Nov 2019"
+        else:
+            self.Married = marr
     def add_husb(self,husb):
         self.Husband_ID = husb
     def add_husb_name(self,id):
@@ -141,7 +163,14 @@ class Families:
     def add_chil(self,chil):
         self.Children.append(chil)
     def add_div(self,div):
-        self.Divorced = div
+        try:
+            dt.datetime.strptime(div, '%d %b %Y')
+        except:
+            print(f"US42 Error: Date {div} is not a valid date!")
+            # Default date to set to not break other functions
+            self.Divorced = "11 Nov 2019"
+        else:
+            self.Divorced = div
 
 
     def pt(self):
@@ -263,7 +292,7 @@ if __name__ == "__main__":
     marriageAfter14(fm, pi)                             #10 --sprint 2
     noBigamy(fm)                                        #11 --sprint 2
     check_parents_not_old(fm,indi)                      #12 --sprint 1
-    check_siblingSpacing(fm, pi)                        #13 and 28 --sprint 2
+    check_siblingSpacing(fm, indi)                      #13 and 28 --sprint 2
     multiple_birth(fm,pi)                               #14 --sprint 2
     check_lessThanFifteen(fm)                           #15 --sprint 3
     check_male_last_name(fm,indi)                       #16 --sprint 1
@@ -276,7 +305,7 @@ if __name__ == "__main__":
     check_uniqueNameBday(pi)                            #23 --sprint 3
     check_unique_fm_by_spouses(fm)                      #24 --sprint 3
 
-
+    listAges(indi)                                      #27 --sprint 4
 
     listDeceased(indi)                                  #29 --sprint 3
     check_list_living_married(fm,indi)                  #30 --sprint 3
