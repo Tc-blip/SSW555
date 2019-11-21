@@ -249,12 +249,8 @@ def pt_id():
 
 
 class TestUserStory(unittest.TestCase):
-    #tests for user story 20 & 26
+    #tests for user story 26
     
-    def test_check_Aunt_and_Uncles(self):
-        '''US 20 test '''
-        self.assertEqual(check_Aunt_and_Uncles(fm,indi), {'@F9@'})
-
     def test_check_Corresponding_Entries(self):
         ''' US 26 test'''
         self.assertEqual(check_Corresponding_Entries(fm, indi), {'@I15@', '@I14@'})
@@ -267,7 +263,7 @@ if __name__ == "__main__":
     pt_id()
     pt_fm()
 
-    # except US26,41
+    # except US40,41
     dateBeforeCurrentDate(fm, indi)                     #01 --sprint 1
     check_Birth_before_marr(fm,pi)                      #02 --sprint 1
     check_Birth_before_death(indi)                      #03 --sprint 1
@@ -310,5 +306,5 @@ if __name__ == "__main__":
     ListUpcomingBirthdays(pi)                           #38 --sprint 3
     ListUpcomingAnniversaries(fm,indi)                  #39 --sprint 3
 
-    unittest.main()                                     #20&26 test --sprint 4
+    unittest.main()                                     #26 test --sprint 4
 
