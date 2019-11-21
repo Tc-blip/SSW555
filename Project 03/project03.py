@@ -280,7 +280,7 @@ class TestUserStory(unittest.TestCase):
 
     def test_check_Aunt_And_Uncles(self):
         '''US 20 test'''
-        self.assertEqual(check_Aunt_and_Uncles(fm,indi),{'@F9@'})
+        self.assertEqual(check_Aunt_and_Uncles(fm,indi),{'@F9@','@F11@'})
     
     def test_check_Corresponding_Entries(self):
         ''' US 26 test'''
