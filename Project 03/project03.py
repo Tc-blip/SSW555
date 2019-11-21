@@ -33,7 +33,6 @@ from US18 import noSiblingMarriage
 from US19 import noCousinMarriage
 from AuntAndUncles import check_Aunt_and_Uncles
 from CorrespondingEntries import check_Corresponding_Entries
-import unittest
 
 
 class Person_info:
@@ -267,7 +266,7 @@ if __name__ == "__main__":
     pt_id()
     pt_fm()
 
-    # except US26,41
+    # except US40,41
     dateBeforeCurrentDate(fm, indi)                     #01 --sprint 1
     check_Birth_before_marr(fm,pi)                      #02 --sprint 1
     check_Birth_before_death(indi)                      #03 --sprint 1
@@ -295,6 +294,7 @@ if __name__ == "__main__":
     check_unique_fm_by_spouses(fm)                      #24 --sprint 3
     check_unique_first_name_fm(fm,indi)                 #25 --sprint 4
     check_Corresponding_Entries(fm,indi)                #26 --sprint 4
+    
 
 
 
@@ -310,5 +310,5 @@ if __name__ == "__main__":
     ListUpcomingBirthdays(pi)                           #38 --sprint 3
     ListUpcomingAnniversaries(fm,indi)                  #39 --sprint 3
 
-    unittest.main()                                     #20&26 test --sprint 4
+    
 
