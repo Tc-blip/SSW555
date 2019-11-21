@@ -310,5 +310,5 @@ if __name__ == "__main__":
     ListUpcomingBirthdays(pi)                           #38 --sprint 3
     ListUpcomingAnniversaries(fm,indi)                  #39 --sprint 3
 
-    unittest.main()                                     #26 test --sprint 4
+    unittest.main()                                     #20&26 test --sprint 4
 
