@@ -30,6 +30,11 @@ from ListOrphans import listOrphans
 from us17 import NoMarrDesc
 from US18 import noSiblingMarriage
 from US19 import noCousinMarriage
+from AuntAndUncles import check_Aunt_and_Uncles
+from CorrespondingEntries import check_Corresponding_Entries
+import unittest
+from listAges import listAges
+from us25 import check_unique_first_name_fm
 
 class Person_info:
     __slots__ = ["ID",'NAME', 'SEX', 'BIRT', 'DEAT', 'FAMC', 'FAMS']
@@ -50,10 +55,24 @@ class Person_info:
         self.SEX= sex
 
     def add_birth(self,birth):
-        self.BIRT = birth
+        try:
+            dt.datetime.strptime(birth, '%d %b %Y')
+        except:
+            print(f"US42 Error: Date {birth} is not a valid date!")
+            # Default date to set to not break other functions
+            self.BIRT = "11 Nov 2019"
+        else:
+            self.BIRT = birth
 
     def add_deat(self, deat):
-        self.DEAT = deat
+        try:
+            dt.datetime.strptime(deat, '%d %b %Y')
+        except:
+            print(f"US42 Error: Date {deat} is not a valid date!")
+            # Default date to set to not break other functions
+            self.DEAT = "11 Nov 2019"
+        else:
+            self.DEAT = deat
 
     def add_famc(self,famc):
         self.FAMC = famc
@@ -129,7 +148,14 @@ class Families:
         self.Children = []
 
     def add_marr(self,marr):
-        self.Married = marr
+        try:
+            dt.datetime.strptime(marr, '%d %b %Y')
+        except:
+            print(f"US42 Error: Date {marr} is not a valid date!")
+            # Default date to set to not break other functions
+            self.Married = "11 Nov 2019"
+        else:
+            self.Married = marr
     def add_husb(self,husb):
         self.Husband_ID = husb
     def add_husb_name(self,id):
@@ -141,7 +167,14 @@ class Families:
     def add_chil(self,chil):
         self.Children.append(chil)
     def add_div(self,div):
-        self.Divorced = div
+        try:
+            dt.datetime.strptime(div, '%d %b %Y')
+        except:
+            print(f"US42 Error: Date {div} is not a valid date!")
+            # Default date to set to not break other functions
+            self.Divorced = "11 Nov 2019"
+        else:
+            self.Divorced = div
 
 
     def pt(self):
@@ -242,15 +275,24 @@ def pt_id():
             pt.add_row([ID,NAME,Gender,Birthday, Age, Alive, Death, Child, Spouse])
     print(pt)
 
+class TestUserStory(unittest.TestCase):
+    #tests for user story 26
 
+    def test_check_Aunt_And_Uncles(self):
+        '''US 20 test'''
+        self.assertEqual(check_Aunt_and_Uncles(fm,indi),{'@F9@','@F11@'})
+    
+    def test_check_Corresponding_Entries(self):
+        ''' US 26 test'''
+        self.assertEqual(check_Corresponding_Entries(fm, indi), {'@I15@', '@I14@'})
 
 if __name__ == "__main__":
-    read_person("test1.ged")
+    read_person("Project 03/test1.ged")
     add_infor()
     pt_id()
     pt_fm()
 
-    # except US26,41
+    # except US40,41
     dateBeforeCurrentDate(fm, indi)                     #01 --sprint 1
     check_Birth_before_marr(fm,pi)                      #02 --sprint 1
     check_Birth_before_death(indi)                      #03 --sprint 1
@@ -263,20 +305,22 @@ if __name__ == "__main__":
     marriageAfter14(fm, pi)                             #10 --sprint 2
     noBigamy(fm)                                        #11 --sprint 2
     check_parents_not_old(fm,indi)                      #12 --sprint 1
-    check_siblingSpacing(fm, pi)                        #13 and 28 --sprint 2
+    check_siblingSpacing(fm, indi)                      #13 and 28 --sprint 2
     multiple_birth(fm,pi)                               #14 --sprint 2
     check_lessThanFifteen(fm)                           #15 --sprint 3
     check_male_last_name(fm,indi)                       #16 --sprint 1
     NoMarrDesc(fm, indi)                                #17 --sprint 4
     noSiblingMarriage(fm)                               #18 --sprint 4
     noCousinMarriage(fm)                                #19 --sprint 4
-
+    check_Aunt_and_Uncles(fm,indi)                      #20 --sprint 4
     check_correct_gender(fm,indi)                       #21 --sprint 2
     check_unique_id(Individual_ID_list,Familiy_ID_list) #22 --sprint 2
     check_uniqueNameBday(pi)                            #23 --sprint 3
     check_unique_fm_by_spouses(fm)                      #24 --sprint 3
+    check_unique_first_name_fm(fm,indi)                 #25 --sprint 4
 
-
+    check_Corresponding_Entries(fm,indi)                #26 --sprint 4
+    listAges(indi)                                      #27 --sprint 4
 
     listDeceased(indi)                                  #29 --sprint 3
     check_list_living_married(fm,indi)                  #30 --sprint 3
@@ -289,3 +333,5 @@ if __name__ == "__main__":
     List_recent_survivors(fm,indi)                      #37 --sprint 3
     ListUpcomingBirthdays(pi)                           #38 --sprint 3
     ListUpcomingAnniversaries(fm,indi)                  #39 --sprint 3
+
+    unittest.main()                                     #20&26 test --sprint 4

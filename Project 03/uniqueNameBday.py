@@ -8,12 +8,9 @@ def check_uniqueNameBday(pi):
         person = pi[key]
         nameBday = person.NAME + person.BIRT
         nameBdayList.append(nameBday)
-    return uniqueNameBday(nameBdayList)
+    uniqueNameBday(nameBdayList)
 
 def uniqueNameBday(bdayList):
     dup_nameBday = [item for item, count in collections.Counter(bdayList).items() if count > 1]
-    if len(dup_nameBday) == 0:
-        return True
-    for dup in dup_nameBday:
-        print("ERROR: Duplicate name and birthday pair found: " + dup)
-    return False
+    for id in dup_nameBday:
+        print(f"US23 ERROR: Duplicate name and birthday pair found: {dup_nameBday}!")
