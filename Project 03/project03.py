@@ -250,6 +250,10 @@ def pt_id():
 
 class TestUserStory(unittest.TestCase):
     #tests for user story 26
+
+    def test_check_Aunt_And_Uncles(self):
+        '''US 20 test'''
+        self.assertEqual(check_Aunt_and_Uncles(fm,indi),{'@F9@'})
     
     def test_check_Corresponding_Entries(self):
         ''' US 26 test'''
@@ -306,5 +310,5 @@ if __name__ == "__main__":
     ListUpcomingBirthdays(pi)                           #38 --sprint 3
     ListUpcomingAnniversaries(fm,indi)                  #39 --sprint 3
 
-    unittest.main()                                     #26 test --sprint 4
+    unittest.main()                                     #20&26 test --sprint 4
 
