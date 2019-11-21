@@ -33,6 +33,7 @@ from US18 import noSiblingMarriage
 from US19 import noCousinMarriage
 from AuntAndUncles import check_Aunt_and_Uncles
 from CorrespondingEntries import check_Corresponding_Entries
+import unittest
 
 
 class Person_info:
@@ -309,6 +310,8 @@ if __name__ == "__main__":
     List_recent_survivors(fm,indi)                      #37 --sprint 3
     ListUpcomingBirthdays(pi)                           #38 --sprint 3
     ListUpcomingAnniversaries(fm,indi)                  #39 --sprint 3
+
+    unittest.main()                                     #20 & 26 test --sprint 4
 
     
 
