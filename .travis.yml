@@ -9,4 +9,3 @@ script:
   - python "Project 03/ListMultipleBirthsTest.py"
   - python "Project 03/ListOrphansTest.py"
   - python "Project 03/AuntAndUnclesTest.py"
-  - python "Project 03/CorrespondingEntriesTest.py"
